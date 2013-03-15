@@ -9,6 +9,7 @@ var express = require('express'),
 function compile(str, path) {
   return stylus(str)
     .set('filename', path)
+    .set('compress', true)
     .use(nib());
 }
 app.set('views', __dirname + '/views');
@@ -22,7 +23,10 @@ app.use(stylus.middleware(
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
-  res.end('Hi there!');
+  res.render('index',
+  { title : 'Home' }
+  );
 });
+
 app.listen(3000);
 console.log("Express server listening on 3000");
