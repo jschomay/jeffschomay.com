@@ -1,17 +1,13 @@
-/*
- * Import nib
- */
+// nib for vendor previxes and some extra goodies
 @import 'nib'
+// semantic grid
+@import 'grid'
+// grid variabls
+// total-width = 100%
 
-/*
- * Grab a custom font from Google
- */
-@import url('http://fonts.googleapis.com/css?family=Quicksand')
-
-/*
- * Nib provides a CSS reset
- */
+// from nib
 global-reset()
+
 
 /*
  * Store the main color and
@@ -19,6 +15,17 @@ global-reset()
  */
 main-color = #fa5b4d
 background-color = #faf9f0
+
+h1
+  font-size 25px
+  padding 5px
+
+h2
+  font-size 20px
+
+h3
+  font-size 18px
+
 
 body
   font-family 'Georgia'
@@ -40,47 +47,44 @@ header
   border-bottom 1px solid darken(main-color, 30%)
   text-shadow 0px -1px 0px darken(main-color, 30%)
 
-.container
-  width 500px
-  margin 50px auto
+#content
+  // column 12
+  margin auto
+  width 960px
   overflow hidden
+  background yellow
 
-.main-content
-  float left
-  width 300px
+#creative-content
+  background blue
+  column 6
+
 
   p
     margin-bottom 20px
 
-.sidebar
-  float left
-  width 200px
+#technical-content
+  background red
+  column 6
 
-  .widget
+  #widgets
+    row 6
 
-    /*
-     * Note the lack of vendor
-     * prefixes here. Nib will
-     * add them for us
-     */
-    border-radius 3px
-    border 1px solid #ccc
-    margin-left 20px
-    background-color background-color
-    box-shadow inset 0px 0px 0px 3px rgba(#fff, 0.8), 0px 3px 0px -2px rgba(#000, 0.1)
+    .widget
+      column 2,6
+      background #ccc
 
-    h1
-      font-family 'Quicksand'
-      margin 13px 10px 4px
-      padding-bottom 10px
-      border-bottom 1px dotted #ddd
-      border-radius 2px 2px 0px 0px
-      margin-bottom 10px
+      h1
+        font-family 'Quicksand'
+        margin 13px 10px 4px
+        padding-bottom 10px
+        border-bottom 1px dotted #ddd
+        border-radius 2px 2px 0px 0px
+        margin-bottom 10px
 
-    p
-      font-size 13px
-      padding 0px 10px
-      margin-bottom 10px
+      p
+        font-size 13px
+        padding 0px 10px
+        margin-bottom 10px
 
 p
   line-height 1.8

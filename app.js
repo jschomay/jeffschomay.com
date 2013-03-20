@@ -9,7 +9,7 @@ var express = require('express'),
 function compile(str, path) {
   return stylus(str)
     .set('filename', path)
-    .set('compress', true)
+    // .set('compress', true)
     .use(nib());
 }
 app.set('views', __dirname + '/views');

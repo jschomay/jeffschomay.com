@@ -2,16 +2,13 @@
   "name": "jeffschomay.com",
   "version": "0.0.0",
   "description": "jeffschomay.com ===============",
-  "main": "index.js",
+  "author": "Jeff Schomay",
   "private": true,
-  "scripts": {
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/jschomay/jeffschomay.com.git"
   },
-  "author": "Jeff Schomay",
-  "dependencies": {
+    "dependencies": {
     "express": "3.x",
     "jade": "*",
     "stylus": "*",
