@@ -3,13 +3,27 @@ html
   head
     title #{title} - My Site
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+    script
+      window.addEventListener('load', function() {
+        var mySwitch = document.getElementById('switch');
+        var body = document.getElementsByTagName('body')[0];
+        mySwitch.addEventListener('click', function(e) {
+          // only switch if you click the right part of the switch
+          if (body.className === 'technical' && e.pageX > document.width/2
+            || body.className === 'creative' && e.pageX< document.width/2) {
+            // only ever expect a class of "technical" or "creative" on the body tag
+            // since it's my code, I'll make sure of that
+            body.className = body.className === "technical" ? "creative" : "technical";
+          }
+        });
+      });
+  body.technical
     header
-      h1 Header
+      #switch
+      h1 Jeff Schomay
+      h3 323-418-2384 | jschomay@gmail.com
     #content
-      #creative-content
-        block creative-content
-      #technical-content
-        block technical-content
+      block content
+
     footer
       p Footer
