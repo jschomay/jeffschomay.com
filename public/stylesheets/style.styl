@@ -8,62 +8,88 @@
 // from nib
 global-reset()
 
+technical-background-color = #333333
+technical-color = #ffffff
+technical-font = 1em font-family "Monaco", "Consolas", "Lucida Console", "monospace"
 
-/*
- * Store the main color and
- * background color as variables
- */
-main-color = #fa5b4d
-background-color = #faf9f0
+creative-background-color = #fafafa
+creative-color = #000000
+creative-font = 1em font-family "Garamond", "Baskerville", "Baskerville Old Face", "Hoefler Text", "Times New Roman", "serif"
+
+border-size = 0px solid // for outlining divs
+
+// technical | creative switch
+.technical
+  font technical-font
+  // #content
+  background-color technical-background-color
+  color technical-color
+  #switch
+    background-position 0 0
+  #creative-content
+    display none
+
+.creative
+  background-color creative-background-color
+  color creative-color
+  font creative-font
+  #switch
+    background-position 0 100%
+  #technical-content
+    display none
+
 
 h1
-  font-size 25px
+  font-size 1.8em
   padding 5px
+  letter-spacing .4em
+  font-style italic
+  line-height 1.7em
 
 h2
-  font-size 20px
+  font-size 1.3em
 
 h3
-  font-size 18px
+  font-size 1em
+
 
 
 body
-  font-family 'Georgia'
-  background-color background-color
-  color #444
+  font-size 100%
 
 header
-  font-family 'Quicksand'
-  padding 50px 10px
-  color #fff
-  font-size 25px
+  padding 30px 0px 50px
   text-align center
 
   /*
    * Note the use of the `main-color`
    * variable and the `darken` function
    */
-  background-color main-color
-  border-bottom 1px solid darken(main-color, 30%)
-  text-shadow 0px -1px 0px darken(main-color, 30%)
+  // border-bottom 1px solid darken(main-color, 30%)
+
+  #switch
+    position relative
+    margin auto
+    width 225px
+    height (@width / 1.4)
+    background-image url('/images/technical-creative.png') //optimize this or use jpg w/ light and dark bg
+    background-size 100%
 
 #content
   // column 12
   margin auto
-  width 960px
+  width 960px+4 // for borders, take off when done
   overflow hidden
-  background yellow
+  border border-size green
 
-#creative-content
-  background blue
+#left
+  border border-size blue
   column 6
-
-
   p
     margin-bottom 20px
 
-#technical-content
-  background red
+#right
+  border border-size red
   column 6
 
   #widgets
@@ -71,10 +97,8 @@ header
 
     .widget
       column 2,6
-      background #ccc
 
       h1
-        font-family 'Quicksand'
         margin 13px 10px 4px
         padding-bottom 10px
         border-bottom 1px dotted #ddd

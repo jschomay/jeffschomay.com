@@ -100,47 +100,70 @@ td {
 a img {
   border: none;
 }
-/*
- * Store the main color and
- * background color as variables
- */
+.technical {
+  font: 1em font-family "Monaco", "Consolas", "Lucida Console", "monospace";
+  background-color: #333;
+  color: #fff;
+}
+.technical #switch {
+  background-position: 0 0;
+}
+.technical #creative-content {
+  display: none;
+}
+.creative {
+  background-color: #fafafa;
+  color: #000;
+  font: 1em font-family "Garamond", "Baskerville", "Baskerville Old Face", "Hoefler Text", "Times New Roman", "serif";
+}
+.creative #switch {
+  background-position: 0 100%;
+}
+.creative #technical-content {
+  display: none;
+}
 h1 {
-  font-size: 25px;
+  font-size: 1.8em;
   padding: 5px;
+  letter-spacing: 0.4em;
+  font-style: italic;
+  line-height: 1.7em;
 }
 h2 {
-  font-size: 20px;
+  font-size: 1.3em;
 }
 h3 {
-  font-size: 18px;
+  font-size: 1em;
 }
 body {
-  font-family: 'Georgia';
-  background-color: #faf9f0;
-  color: #444;
+  font-size: 100%;
 }
 header {
-  font-family: 'Quicksand';
-  padding: 50px 10px;
-  color: #fff;
-  font-size: 25px;
+  padding: 30px 0px 50px;
   text-align: center;
 /*
    * Note the use of the `main-color`
    * variable and the `darken` function
    */
-  background-color: #fa5b4d;
-  border-bottom: 1px solid #df1806;
-  text-shadow: 0px -1px 0px #df1806;
+}
+header #switch {
+  position: relative;
+  margin: auto;
+  width: 225px;
+  height: 160.71428571428572px;
+  background-image: url("/images/technical-creative.png");
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
 }
 #content {
   margin: auto;
-  width: 960px;
+  width: 964px;
   overflow: hidden;
-  background: #ff0;
+  border: 0px solid #008000;
 }
-#creative-content {
-  background: #00f;
+#left {
+  border: 0px solid #00f;
   display: inline;
   float: left;
   overflow: hidden;
@@ -149,11 +172,11 @@ header {
   *width: 460px -correction;
   *margin: 0 10px -correction;
 }
-#creative-content p {
+#left p {
   margin-bottom: 20px;
 }
-#technical-content {
-  background: #f00;
+#right {
+  border: 0px solid #f00;
   display: inline;
   float: left;
   overflow: hidden;
@@ -162,14 +185,14 @@ header {
   *width: 460px -correction;
   *margin: 0 10px -correction;
 }
-#technical-content #widgets {
+#right #widgets {
   display: block;
   width: 979.9999999999999px;
   margin: 0 -10px;
   *width: 979.9999999999999px -correction;
   *margin: 0 -10px -correction;
 }
-#technical-content #widgets .widget {
+#right #widgets .widget {
   display: inline;
   float: left;
   overflow: hidden;
@@ -177,10 +200,8 @@ header {
   margin: 0 10px;
   *width: 140px -correction;
   *margin: 0 10px -correction;
-  background: #ccc;
 }
-#technical-content #widgets .widget h1 {
-  font-family: 'Quicksand';
+#right #widgets .widget h1 {
   margin: 13px 10px 4px;
   padding-bottom: 10px;
   border-bottom: 1px dotted #ddd;
@@ -188,7 +209,7 @@ header {
   border-radius: 2px 2px 0px 0px;
   margin-bottom: 10px;
 }
-#technical-content #widgets .widget p {
+#right #widgets .widget p {
   font-size: 13px;
   padding: 0px 10px;
   margin-bottom: 10px;
