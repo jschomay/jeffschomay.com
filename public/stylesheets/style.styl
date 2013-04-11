@@ -1,7 +1,19 @@
 // nib for vendor previxes and some extra goodies
 @import 'nib'
-// semantic grid
-@import 'grid'
+//  grid
+@import "bootstylus/reset.styl"
+@import "bootstylus/variables.styl"
+@import "bootstylus/mixins.styl"
+$gridColumnWidth =         40px
+$gridGutterWidth =         40px
+// convinience shorthand
+row()
+  $makeRow()
+column(span)
+  $makeColumn(span)
+offset(span)
+  $gridSystem-offset($gridColumnWidth, $gridGutterWidth, span)
+
 // technical font (from google)
 @font-face {
   font-family: 'Source Code Pro';
@@ -20,16 +32,6 @@
 global-reset()
 
 
-// grid variabls
-// total-width = 100%
-columns = 12
-column-width = 40
-gutter-width = 40
-full-width-centered()
-  width 960px // need to hard code to center with margin auto
-  margin auto
-
-
 technical-background-color = #333333
 technical-color = #ffffff
 technical-font = 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucida Console', 'monospace'
@@ -38,7 +40,6 @@ creative-background-color = #fcfcfc
 creative-color = #000000
 creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif'
 
-border-size = 0px solid // for outlining divs
 
 
 
@@ -133,29 +134,29 @@ header
     background-size 100%
 
 #content
-  full-width-centered()
-  overflow hidden
-  border border-size green
+  $container-fixed()
+  // full-width-centered()
+
+#creative-content, #technical-content
+  row()
 
 #left
-  border border-size blue
   column 8
 
 #right
-  border border-size red
   column 4
 
   #widgets
-    row 4
+    row()
 
     .widget
-      column 2.4
+      column 2
 
       p
         font-size .8em
 
 footer
-  full-width-centered()
+  $container-fixed()
   text-align center
   padding-top 20px
   font-size .8em

@@ -4,13 +4,15 @@
 var express = require('express'),
   stylus = require('stylus'),
   nib = require('nib'),
+  bootstrap = require('bootstylus'),
   app = express();
 
 function compile(str, path) {
   return stylus(str)
     .set('filename', path)
     // .set('compress', true)
-    .use(nib());
+    .use(nib())
+    .use(bootstrap());
 }
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
