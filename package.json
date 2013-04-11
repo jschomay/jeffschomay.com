@@ -12,6 +12,7 @@
     "express": "3.x",
     "jade": "*",
     "stylus": "*",
-    "nib": "*"
+    "nib": "*",
+    "markdown": "*"
   }
 }

@@ -9,6 +9,18 @@ body *zoom:1:after {
 body *zoom:1:after {
   clear: both;
 }
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url("http://themes.googleusercontent.com/static/fonts/sourcecodepro/v3/leqv3v-yTsJNC7nFznSMqcVNtom4QlEDNJaqqqzqdSs.woff") format('woff');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), url("http://themes.googleusercontent.com/static/fonts/sourcecodepro/v3/leqv3v-yTsJNC7nFznSMqSmgpmuQqK2I-L2S9cF65Ek.woff") format('woff');
+}
 html,
 body,
 div,
@@ -101,7 +113,8 @@ a img {
   border: none;
 }
 .technical {
-  font: 1em font-family "Monaco", "Consolas", "Lucida Console", "monospace";
+  font: 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucida Console', 'monospace';
+  font-weight: 300;
   background-color: #333;
   color: #fff;
 }
@@ -112,9 +125,13 @@ a img {
   display: none;
 }
 .creative {
-  background-color: #fafafa;
+  background-color: #fcfcfc;
   color: #000;
-  font: 1em font-family "Garamond", "Baskerville", "Baskerville Old Face", "Hoefler Text", "Times New Roman", "serif";
+  font: 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif';
+}
+.creative #content h1,
+.creative #content h2 {
+  border-bottom: 1px solid #000;
 }
 .creative #switch {
   background-position: 0 100%;
@@ -124,16 +141,32 @@ a img {
 }
 h1 {
   font-size: 1.8em;
-  padding: 5px;
+  padding: 20px;
+  padding-bottom: 10px;
   letter-spacing: 0.4em;
-  font-style: italic;
-  line-height: 1.7em;
 }
 h2 {
-  font-size: 1.3em;
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 h3 {
-  font-size: 1em;
+  font-size: 0.8em;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+em {
+  font-style: italic;
+}
+strong {
+  font-weight: 600;
+}
+li {
+  margin-left: 20px;
+  list-style: circle;
 }
 body {
   font-size: 100%;
@@ -146,7 +179,11 @@ header {
    * variable and the `darken` function
    */
 }
+header h2 {
+  font-size: 1.2em;
+}
 header #switch {
+  cursor: pointer;
   position: relative;
   margin: auto;
   width: 225px;
@@ -157,8 +194,8 @@ header #switch {
   background-size: 100%;
 }
 #content {
+  width: 960px;
   margin: auto;
-  width: 964px;
   overflow: hidden;
   border: 0px solid #008000;
 }
@@ -167,60 +204,44 @@ header #switch {
   display: inline;
   float: left;
   overflow: hidden;
-  width: 460px;
-  margin: 0 10px;
-  *width: 460px -correction;
-  *margin: 0 10px -correction;
-}
-#left p {
-  margin-bottom: 20px;
+  width: 600px;
+  margin: 0 20px;
+  *width: 600px -correction;
+  *margin: 0 20px -correction;
 }
 #right {
   border: 0px solid #f00;
   display: inline;
   float: left;
   overflow: hidden;
-  width: 460px;
-  margin: 0 10px;
-  *width: 460px -correction;
-  *margin: 0 10px -correction;
+  width: 280px;
+  margin: 0 20px;
+  *width: 280px -correction;
+  *margin: 0 20px -correction;
 }
 #right #widgets {
   display: block;
-  width: 979.9999999999999px;
-  margin: 0 -10px;
-  *width: 979.9999999999999px -correction;
-  *margin: 0 -10px -correction;
+  width: 1000.0000000000001px;
+  margin: 0 -20px;
+  *width: 1000.0000000000001px -correction;
+  *margin: 0 -20px -correction;
 }
 #right #widgets .widget {
   display: inline;
   float: left;
   overflow: hidden;
-  width: 140px;
-  margin: 0 10px;
-  *width: 140px -correction;
-  *margin: 0 10px -correction;
-}
-#right #widgets .widget h1 {
-  margin: 13px 10px 4px;
-  padding-bottom: 10px;
-  border-bottom: 1px dotted #ddd;
-  -webkit-border-radius: 2px 2px 0px 0px;
-  border-radius: 2px 2px 0px 0px;
-  margin-bottom: 10px;
+  width: 152px;
+  margin: 0 20px;
+  *width: 152px -correction;
+  *margin: 0 20px -correction;
 }
 #right #widgets .widget p {
-  font-size: 13px;
-  padding: 0px 10px;
-  margin-bottom: 10px;
-}
-p {
-  line-height: 1.8;
+  font-size: 0.8em;
 }
 footer {
-  width: 500px;
-  margin: 50px auto;
-  border-top: 1px dotted #ccc;
-  padding-top: 5px;
-  font-size: 13px;
+  width: 960px;
+  margin: auto;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 0.8em;
 }

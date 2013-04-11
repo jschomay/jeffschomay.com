@@ -2,55 +2,108 @@
 @import 'nib'
 // semantic grid
 @import 'grid'
-// grid variabls
-// total-width = 100%
+// technical font (from google)
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url(http://themes.googleusercontent.com/static/fonts/sourcecodepro/v3/leqv3v-yTsJNC7nFznSMqcVNtom4QlEDNJaqqqzqdSs.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), url(http://themes.googleusercontent.com/static/fonts/sourcecodepro/v3/leqv3v-yTsJNC7nFznSMqSmgpmuQqK2I-L2S9cF65Ek.woff) format('woff');
+}
 
 // from nib
 global-reset()
 
+
+// grid variabls
+// total-width = 100%
+columns = 12
+column-width = 40
+gutter-width = 40
+full-width-centered()
+  width 960px // need to hard code to center with margin auto
+  margin auto
+
+
 technical-background-color = #333333
 technical-color = #ffffff
-technical-font = 1em font-family "Monaco", "Consolas", "Lucida Console", "monospace"
+technical-font = 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucida Console', 'monospace'
 
-creative-background-color = #fafafa
+creative-background-color = #fcfcfc
 creative-color = #000000
-creative-font = 1em font-family "Garamond", "Baskerville", "Baskerville Old Face", "Hoefler Text", "Times New Roman", "serif"
+creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif'
 
 border-size = 0px solid // for outlining divs
 
+
+
 // technical | creative switch
 .technical
+
   font technical-font
+  font-weight 300
   // #content
   background-color technical-background-color
   color technical-color
+
   #switch
     background-position 0 0
+
   #creative-content
     display none
 
 .creative
+
   background-color creative-background-color
   color creative-color
   font creative-font
+
+  #content
+    h1, h2
+      border-bottom 1px solid creative-color
+
   #switch
     background-position 0 100%
+
   #technical-content
     display none
 
 
+
 h1
   font-size 1.8em
-  padding 5px
+  padding 20px
+  padding-bottom 10px
   letter-spacing .4em
-  font-style italic
-  line-height 1.7em
 
 h2
-  font-size 1.3em
+  font-size 1.5em
+  margin-bottom 10px
 
 h3
-  font-size 1em
+  font-size .8em
+  font-weight 600
+  margin-bottom 3px
+
+p
+  margin-bottom 10px
+  line-height 1.5
+em
+  font-style italic
+
+strong
+  font-weight 600
+
+li
+  margin-left 20px
+  list-style circle
+
+
 
 
 
@@ -61,6 +114,9 @@ header
   padding 30px 0px 50px
   text-align center
 
+  h2
+    font-size 1.2em
+
   /*
    * Note the use of the `main-color`
    * variable and the `darken` function
@@ -68,6 +124,7 @@ header
   // border-bottom 1px solid darken(main-color, 30%)
 
   #switch
+    cursor pointer
     position relative
     margin auto
     width 225px
@@ -76,46 +133,29 @@ header
     background-size 100%
 
 #content
-  // column 12
-  margin auto
-  width 960px+4 // for borders, take off when done
+  full-width-centered()
   overflow hidden
   border border-size green
 
 #left
   border border-size blue
-  column 6
-  p
-    margin-bottom 20px
+  column 8
 
 #right
   border border-size red
-  column 6
+  column 4
 
   #widgets
-    row 6
+    row 4
 
     .widget
-      column 2,6
-
-      h1
-        margin 13px 10px 4px
-        padding-bottom 10px
-        border-bottom 1px dotted #ddd
-        border-radius 2px 2px 0px 0px
-        margin-bottom 10px
+      column 2.4
 
       p
-        font-size 13px
-        padding 0px 10px
-        margin-bottom 10px
-
-p
-  line-height 1.8
+        font-size .8em
 
 footer
-  width 500px
-  margin 50px auto
-  border-top 1px dotted #ccc
-  padding-top 5px
-  font-size 13px
+  full-width-centered()
+  text-align center
+  padding-top 20px
+  font-size .8em
