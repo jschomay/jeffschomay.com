@@ -3,6 +3,8 @@ html
   head
     title #{title} - My Site
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js")
+    script(src="/js/jquery.masonry.min.js")
     script
       window.addEventListener('load', function() {
         var mySwitch = document.getElementById('switch');
@@ -15,6 +17,15 @@ html
             // since it's my code, I'll make sure of that
             body.className = body.className === "technical" ? "creative" : "technical";
           }
+        });
+      });
+      $(document).ready(function() {
+        var $container = $('#widgets');
+        $container.imagesLoaded(function(){
+          $container.masonry({
+            itemSelector : '.widget',
+            columnWidth : $container.width()/2
+          });
         });
       });
   body.creative
