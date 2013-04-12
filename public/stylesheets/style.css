@@ -193,33 +193,6 @@ td {
 a img {
   border: none;
 }
-.technical {
-  font: 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucida Console', 'monospace';
-  font-weight: 300;
-  background-color: #333;
-  color: #fff;
-}
-.technical #switch {
-  background-position: 0 0;
-}
-.technical #creative-content {
-  display: none;
-}
-.creative {
-  background-color: #fcfcfc;
-  color: #000;
-  font: 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif';
-}
-.creative #content h1,
-.creative #content h2 {
-  border-bottom: 1px solid #000;
-}
-.creative #switch {
-  background-position: 0 100%;
-}
-.creative #technical-content {
-  display: none;
-}
 h1 {
   font-size: 1.8em;
   padding: 20px;
@@ -231,12 +204,12 @@ h2 {
   margin-bottom: 10px;
 }
 h3 {
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-weight: 600;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 p {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   line-height: 1.5;
 }
 em {
@@ -247,7 +220,22 @@ strong {
 }
 li {
   margin-left: 20px;
+  margin-bottom: 10px;
   list-style: circle;
+}
+.float-left {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.float-right {
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.center {
+  display: block;
+  margin: auto;
 }
 body {
   font-size: 100%;
@@ -307,12 +295,12 @@ header #switch {
 #left {
   float: left;
   margin-left: 40px;
-  width: 600px;
+  width: 440px;
 }
 #right {
   float: left;
   margin-left: 40px;
-  width: 280px;
+  width: 440px;
 }
 #right #widgets {
   margin-left: -40px;
@@ -329,10 +317,14 @@ header #switch {
 #right #widgets .widget {
   float: left;
   margin-left: 40px;
-  width: 120px;
+  width: 200px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
 }
 #right #widgets .widget p {
-  font-size: 0.8em;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  line-height: 1.3;
 }
 footer {
   width: 940px;
@@ -350,4 +342,45 @@ footer:after {
 }
 footer:after {
   clear: both;
+}
+.technical {
+  font: 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucida Console', 'monospace';
+  font-weight: 300;
+  background-color: #333;
+  color: #fff;
+}
+.technical #switch {
+  background-position: 0 0;
+}
+.technical #creative-content {
+  display: none;
+}
+.creative {
+  background-color: #fcfcfc;
+  color: #000;
+  font: 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif';
+}
+.creative #content h1,
+.creative #content h2 {
+  border-bottom: 1px solid #000;
+}
+.creative #content h3 {
+  color: #21a3c4;
+}
+.creative a {
+  color: #daba10;
+}
+.creative a:hover {
+  color: #db521d;
+}
+.creative #switch {
+  background-position: 0 100%;
+}
+.creative #technical-content {
+  display: none;
+}
+.creative footer {
+  background: #555;
+  width: 100%;
+  color: #fff;
 }

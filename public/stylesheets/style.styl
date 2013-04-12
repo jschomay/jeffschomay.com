@@ -4,17 +4,8 @@
 @import "bootstylus/reset.styl"
 @import "bootstylus/variables.styl"
 @import "bootstylus/mixins.styl"
-$gridColumnWidth =         40px
-$gridGutterWidth =         40px
-// convinience shorthand
-row()
-  $makeRow()
-column(span)
-  $makeColumn(span)
-offset(span)
-  $gridSystem-offset($gridColumnWidth, $gridGutterWidth, span)
 
-// technical font (from google)
+// load font (from google web fonts)
 @font-face {
   font-family: 'Source Code Pro';
   font-style: normal;
@@ -28,51 +19,23 @@ offset(span)
   src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), url(http://themes.googleusercontent.com/static/fonts/sourcecodepro/v3/leqv3v-yTsJNC7nFznSMqSmgpmuQqK2I-L2S9cF65Ek.woff) format('woff');
 }
 
+$gridColumnWidth = 40px
+$gridGutterWidth = 40px
+
+// convinience shorthand
+row()
+  $makeRow()
+column(span)
+  $makeColumn(span)
+offset(span)
+  $gridSystem-offset($gridColumnWidth, $gridGutterWidth, span)
+
+
+
 // from nib
 global-reset()
 
 
-technical-background-color = #333333
-technical-color = #ffffff
-technical-font = 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucida Console', 'monospace'
-
-creative-background-color = #fcfcfc
-creative-color = #000000
-creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif'
-
-
-
-
-// technical | creative switch
-.technical
-
-  font technical-font
-  font-weight 300
-  // #content
-  background-color technical-background-color
-  color technical-color
-
-  #switch
-    background-position 0 0
-
-  #creative-content
-    display none
-
-.creative
-
-  background-color creative-background-color
-  color creative-color
-  font creative-font
-
-  #content
-    h1, h2
-      border-bottom 1px solid creative-color
-
-  #switch
-    background-position 0 100%
-
-  #technical-content
-    display none
 
 
 
@@ -87,12 +50,12 @@ h2
   margin-bottom 10px
 
 h3
-  font-size .8em
+  font-size .9em
   font-weight 600
-  margin-bottom 3px
+  margin-bottom 5px
 
 p
-  margin-bottom 10px
+  margin-bottom 20px
   line-height 1.5
 em
   font-style italic
@@ -102,9 +65,22 @@ strong
 
 li
   margin-left 20px
+  margin-bottom 10px
   list-style circle
 
+.float-left
+  float left
+  margin-right 10px
+  margin-bottom 10px
 
+.float-right
+  float right
+  margin-left 10px
+  margin-bottom 10px
+
+.center
+  display block
+  margin auto
 
 
 
@@ -135,28 +111,93 @@ header
 
 #content
   $container-fixed()
-  // full-width-centered()
 
 #creative-content, #technical-content
   row()
 
 #left
-  column 8
+  column 6
 
 #right
-  column 4
+  column 6
 
   #widgets
     row()
 
     .widget
-      column 2
+      column 3
+      margin-bottom 20px
+      border-bottom 1px solid #ccc
 
       p
-        font-size .8em
+        font-size .9em
+        margin-bottom 10px
+        line-height 1.3
 
 footer
   $container-fixed()
   text-align center
   padding-top 20px
   font-size .8em
+
+
+
+
+
+// technical side overrides
+technical-background-color = #333333
+technical-color = #ffffff
+technical-font = 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucida Console', 'monospace'
+
+.technical
+
+  font technical-font
+  font-weight 300
+  // #content
+  background-color technical-background-color
+  color technical-color
+
+  #switch
+    background-position 0 0
+
+  #creative-content
+    display none
+
+
+
+
+
+// creative side overrides
+creative-background-color = #fcfcfc
+creative-color = #000000
+creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif'
+
+.creative
+
+  background-color creative-background-color
+  color creative-color
+  font creative-font
+
+  #content
+    h1, h2
+      border-bottom 1px solid creative-color
+
+    h3
+      color #21A3C4
+
+  a
+    color #DABA10
+  a:hover
+    color #DB521D
+
+  #switch
+    background-position 0 100%
+
+  #technical-content
+    display none
+
+  footer
+    background #555
+    width 100%
+    color white
+
