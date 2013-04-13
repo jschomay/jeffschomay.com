@@ -20,17 +20,18 @@ html
         });
       });
       $(document).ready(function() {
-        var $container = $('#widgets');
+        var $container = $('.projects');
         $container.imagesLoaded(function(){
           $container.masonry({
-            itemSelector : '.widget',
+            itemSelector : '.project',
             columnWidth : $container.width()/2
           });
         });
       });
-  body.creative
+  body.technical
     header
       #switch
+      #arrow
       h1 Jeff Schomay
       h2 323-418-2384 | jschomay@gmail.com
     #content

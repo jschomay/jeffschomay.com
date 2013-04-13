@@ -93,8 +93,8 @@ textarea {
 @font-face {
   font-family: 'Source Code Pro';
   font-style: normal;
-  font-weight: 300;
-  src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url("http://themes.googleusercontent.com/static/fonts/sourcecodepro/v3/leqv3v-yTsJNC7nFznSMqcVNtom4QlEDNJaqqqzqdSs.woff") format('woff');
+  font-weight: 200;
+  src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'), url("http://themes.googleusercontent.com/static/fonts/sourcecodepro/v3/leqv3v-yTsJNC7nFznSMqS-IiwWNzQT_LXAtr-Ee9Pw.woff") format('woff');
 }
 @font-face {
   font-family: 'Source Code Pro';
@@ -243,6 +243,7 @@ body {
 header {
   padding: 30px 0px 50px;
   text-align: center;
+  position: relative;
 /*
    * Note the use of the `main-color`
    * variable and the `darken` function
@@ -257,7 +258,16 @@ header #switch {
   margin: auto;
   width: 225px;
   height: 160.71428571428572px;
-  background-image: url("/images/technical-creative.png");
+  background-image: url("/images/switch.jpg");
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+}
+header #arrow {
+  position: absolute;
+  width: 275px;
+  height: 68.75px;
+  background-image: url("/images/arrows.jpg");
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
   background-size: 100%;
@@ -302,26 +312,26 @@ header #switch {
   margin-left: 40px;
   width: 440px;
 }
-#right #widgets {
+#right .projects {
   margin-left: -40px;
   *zoom: 1;
 }
-#right #widgets:before,
-#right #widgets:after {
+#right .projects:before,
+#right .projects:after {
   display: table;
   content: "";
 }
-#right #widgets:after {
+#right .projects:after {
   clear: both;
 }
-#right #widgets .widget {
+#right .projects .project {
   float: left;
   margin-left: 40px;
   width: 200px;
   margin-bottom: 20px;
   border-bottom: 1px solid #ccc;
 }
-#right #widgets .widget p {
+#right .projects .project p {
   font-size: 0.9em;
   margin-bottom: 10px;
   line-height: 1.3;
@@ -349,11 +359,36 @@ footer:after {
   background-color: #333;
   color: #fff;
 }
+.technical header h2 {
+  color: #6fe053;
+}
 .technical #switch {
   background-position: 0 0;
 }
+.technical #arrow {
+  top: 40px;
+  right: 150px;
+}
 .technical #creative-content {
-  display: none;
+  height: 0px;
+  overflow: hidden;
+}
+.technical h2 {
+  color: #22b7c4;
+}
+.technical h3 {
+  color: #dd1f1f;
+}
+.technical a {
+  color: #c734db;
+}
+.technical a:hover {
+  color: #6fe053;
+}
+.technical footer {
+  width: 100%;
+  border-top: 4px solid #eee;
+  background: #555;
 }
 .creative {
   background-color: #fcfcfc;
@@ -376,8 +411,14 @@ footer:after {
 .creative #switch {
   background-position: 0 100%;
 }
+.creative #arrow {
+  top: 30px;
+  left: 150px;
+  background-position: 0 100%;
+}
 .creative #technical-content {
-  display: none;
+  height: 0px;
+  overflow: hidden;
 }
 .creative footer {
   background: #555;

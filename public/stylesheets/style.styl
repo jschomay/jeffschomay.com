@@ -9,8 +9,8 @@
 @font-face {
   font-family: 'Source Code Pro';
   font-style: normal;
-  font-weight: 300;
-  src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url(http://themes.googleusercontent.com/static/fonts/sourcecodepro/v3/leqv3v-yTsJNC7nFznSMqcVNtom4QlEDNJaqqqzqdSs.woff) format('woff');
+  font-weight: 200;
+  src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'), url(http://themes.googleusercontent.com/static/fonts/sourcecodepro/v3/leqv3v-yTsJNC7nFznSMqS-IiwWNzQT_LXAtr-Ee9Pw.woff) format('woff');
 }
 @font-face {
   font-family: 'Source Code Pro';
@@ -90,6 +90,7 @@ body
 header
   padding 30px 0px 50px
   text-align center
+  position relative
 
   h2
     font-size 1.2em
@@ -106,7 +107,14 @@ header
     margin auto
     width 225px
     height (@width / 1.4)
-    background-image url('/images/technical-creative.png') //optimize this or use jpg w/ light and dark bg
+    background-image url('/images/switch.jpg')
+    background-size 100%
+
+  #arrow
+    position absolute
+    width 275px
+    height (@width / 4)
+    background-image url('/images/arrows.jpg')
     background-size 100%
 
 #content
@@ -121,10 +129,10 @@ header
 #right
   column 6
 
-  #widgets
+  .projects
     row()
 
-    .widget
+    .project
       column 3
       margin-bottom 20px
       border-bottom 1px solid #ccc
@@ -157,13 +165,37 @@ technical-font = 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucid
   background-color technical-background-color
   color technical-color
 
+  header h2
+    color #6FE053
+
   #switch
     background-position 0 0
 
+  #arrow
+    top 40px
+    right 150px
+
   #creative-content
-    display none
+    // visibility hidden
+    height 0px
+    overflow hidden
 
+  h2
+    color #22B7C4
 
+  h3
+    color #DD1F1F
+
+  a
+    color #C734DB
+  
+  a:hover
+    color #6FE053
+
+  footer
+    width 100%
+    border-top 4px solid #EEE
+    background #555
 
 
 
@@ -193,8 +225,15 @@ creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Fa
   #switch
     background-position 0 100%
 
+  #arrow
+    top 30px
+    left 150px
+    background-position 0 100%
+
   #technical-content
-    display none
+    // visibility hidden
+    height 0px
+    overflow hidden
 
   footer
     background #555
