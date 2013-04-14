@@ -95,6 +95,9 @@ header
   h2
     font-size 1.2em
 
+    a
+      text-decoration none
+
   /*
    * Note the use of the `main-color`
    * variable and the `darken` function
@@ -112,6 +115,7 @@ header
 
   #arrow
     position absolute
+    left 50%
     width 275px
     height (@width / 4)
     background-image url('/images/arrows.jpg')
@@ -165,15 +169,16 @@ technical-font = 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucid
   background-color technical-background-color
   color technical-color
 
-  header h2
-    color #6FE053
+  header
+    h2, h2 a, h2 a:hover
+      color #6FE053
 
   #switch
     background-position 0 0
 
   #arrow
     top 40px
-    right 150px
+    margin-left 120px
 
   #creative-content
     // visibility hidden
@@ -210,6 +215,11 @@ creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Fa
   color creative-color
   font creative-font
 
+  header
+    header
+    h2, h2 a, h2 a:hover
+      color inherit
+
   #content
     h1, h2
       border-bottom 1px solid creative-color
@@ -227,7 +237,7 @@ creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Fa
 
   #arrow
     top 30px
-    left 150px
+    margin-left -400px
     background-position 0 100%
 
   #technical-content

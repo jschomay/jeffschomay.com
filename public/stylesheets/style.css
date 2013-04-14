@@ -252,6 +252,9 @@ header {
 header h2 {
   font-size: 1.2em;
 }
+header h2 a {
+  text-decoration: none;
+}
 header #switch {
   cursor: pointer;
   position: relative;
@@ -265,6 +268,7 @@ header #switch {
 }
 header #arrow {
   position: absolute;
+  left: 50%;
   width: 275px;
   height: 68.75px;
   background-image: url("/images/arrows.jpg");
@@ -359,7 +363,9 @@ footer:after {
   background-color: #333;
   color: #fff;
 }
-.technical header h2 {
+.technical header h2,
+.technical header h2 a,
+.technical header h2 a:hover {
   color: #6fe053;
 }
 .technical #switch {
@@ -367,7 +373,7 @@ footer:after {
 }
 .technical #arrow {
   top: 40px;
-  right: 150px;
+  margin-left: 120px;
 }
 .technical #creative-content {
   height: 0px;
@@ -395,6 +401,12 @@ footer:after {
   color: #000;
   font: 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif';
 }
+.creative header header,
+.creative header h2,
+.creative header h2 a,
+.creative header h2 a:hover {
+  color: inherit;
+}
 .creative #content h1,
 .creative #content h2 {
   border-bottom: 1px solid #000;
@@ -413,7 +425,7 @@ footer:after {
 }
 .creative #arrow {
   top: 30px;
-  left: 150px;
+  margin-left: -400px;
   background-position: 0 100%;
 }
 .creative #technical-content {
