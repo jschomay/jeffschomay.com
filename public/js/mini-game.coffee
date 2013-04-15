@@ -33,9 +33,12 @@
       else
         cb()
 
-
+    # this render function just appends the current string to the 
+    # end of the page and scrolls to the bottom if needed
     render: (data) ->
       @$stage.append data
+      # scroll page to bottom
+      $(window).scrollTop($(document).height())
 
     # first animation sequence with delay and string
     sequence1: [
@@ -45,7 +48,7 @@
     ,
       d: 200, s: '<br/>&nbsp; &nbsp; &nbsp; &nbsp; Event type: click ([object Object])<br/><br/>'
     ,
-      d: 800, s: new Date() + ' - Attempting to relaunch page'
+      d: 1900, s: new Date() + ' - Attempting to relaunch page'
     ,
       d: 250, s: " . "
     ,
@@ -67,23 +70,25 @@
     ,
       d: 250, s: 'FAILED: (24) Image assets keys corrupted'
     ,
-      d: 400, s: '<br/><br/>Switching to manual override mode. . . . . .'
+      d: 1600, s: '<br/><br/>Switching to manual override mode. . . . . .'
     ,
-      d: 400, s: '<br/><span style="color:green;">[MANUAL OVERRIDE MODE ACTIVE]</span>'
+      d: 1100, s: '<br/><span style="color:green;">[MANUAL OVERRIDE MODE ACTIVE]</span>'
     ,
       d: 1500, s: '<br/><br/>Incoming network message:'
     ,
       d: 1000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>Oh, hi there.  You pressed the button, didn\'t you.'
     ,
-      d: 1000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>I <em>knew </em>you were going to press that button!!'
+      d: 3000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>I <em>knew </em>you were going to press that button!!'
     ,
-      d: 4000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>It\'s ok, we can fix this.  I just need a little help from you to reconnect my image assets to their database keys.  Think of it as a game...'
+      d: 3500, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>It\'s ok, we can fix this.  I just need a little help from you to reconnect my image assets to their database keys.  Think of it as a game.  Just follow along.  One second...'
     ,
-      d: 400, s: ''
+      d: 6000, s: '<br/><br/><span style="color:green;">[LOADING IMAGE FRAGMENT 1]</span>'
     ,
-      d: 400, s: ''
+      d: 1000, s: '<br/><img with="100" height="100" src="" border="1" alt="img here"/><br/>Asset keys: <span style="color:gray;">["origami"], ["juggler"], ["eagle_scout"], ["unicycle"], ["travel"]</span>'
     ,
-      d: 400, s: ''
+      d: 2000, s: '<br/><br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay - </span>Ok, it\'s your turn.  Click on the asset key you think this image fragment fits with.'
+    ,
+      d: 400, s: '<br/><br/>Waiting for user input...'
     ] 
 
 
