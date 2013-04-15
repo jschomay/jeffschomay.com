@@ -2,42 +2,21 @@
 html
   head
     title Jeff Schomay - My Creative and Technical Sides
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js")
+    link(rel='stylesheet', href='/css/style.css')
+    script(src="http://code.jquery.com/jquery-1.9.1.min.js")
     script(src="/js/jquery.masonry.min.js")
+    script(src="/js/main.js")
+    script(src="/js/mini-game.js")
     script
-      window.addEventListener('load', function() {
-        var mySwitch = document.getElementById('switch');
-        var body = document.getElementsByTagName('body')[0];
-        mySwitch.addEventListener('click', function(e) {
-          // only switch if you click the right part of the switch
-          if (body.className === 'technical' && e.pageX > document.width/2
-            || body.className === 'creative' && e.pageX< document.width/2) {
-            // only ever expect a class of "technical" or "creative" on the body tag
-            // since it's my code, I'll make sure of that
-            body.className = body.className === "technical" ? "creative" : "technical";
-          }
-        });
-      });
-      $(document).ready(function() {
-        var $container = $('.projects');
-        $container.imagesLoaded(function(){
-          $container.masonry({
-            itemSelector : '.project',
-            columnWidth : $container.width()/2
-          });
-        });
-      });
-    //- script
-    //-   var _gaq = _gaq || [];
-    //-   _gaq.push(['_setAccount', 'UA-40140506-1']);
-    //-   _gaq.push(['_trackPageview']);
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-40140506-1']);
+      _gaq.push(['_trackPageview']);
 
-    //-   (function() {
-    //-     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    //-     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    //-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    //-   })();
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
   body.technical
     #page
@@ -67,6 +46,6 @@ html
 
       footer
         :markdown
-          This site was designed and coded by Jeff Schomay using [Express](http://expressjs.com/), [Jade](http://jade-lang.com/), and [Stylus](http://learnboost.github.io/stylus/).  View the source on [Github](href="https://github.com/jschomay/jeffschomay.com").
+          This site was designed and coded by Jeff Schomay using [Express](http://expressjs.com/), [Jade](http://jade-lang.com/), [Stylus](http://learnboost.github.io/stylus/), and [coffeescript](coffeescript.org).  View the source on [Github](href="https://github.com/jschomay/jeffschomay.com").
     #about
       include about
