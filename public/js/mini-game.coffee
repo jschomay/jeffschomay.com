@@ -1,7 +1,18 @@
 (->
+
+  # convinience function
+  getTime = ->
+    currentTime = new Date()
+    hours = currentTime.getHours()
+    minutes = currentTime.getMinutes()
+    if minutes < 10
+      minutes = "0" + minutes
+    "(" + hours + ":" + minutes + ")"
+
+  # main game code
   class Game
     start: ->
-      console.log "game started ", @getTime(), @sequence1
+      console.log "game started ", getTime()
 
       @$stage = $ '#about'
 
@@ -26,25 +37,55 @@
     render: (data) ->
       @$stage.append data
 
+    # first animation sequence with delay and string
     sequence1: [
-      d: 500, s: "one"
+      d: 200, s: '<br/>' + new Date() + ' - <span style="color: red;">ERROR (42): site interrupt - User pressed the wrong button</span>'
     ,
-      d: 200, s: " . "
+      d: 200, s: '<br/>&nbsp; &nbsp; &nbsp; &nbsp; Button id: #dont-push (index.html:32:17)'
     ,
-      d: 200, s: " . "
+      d: 200, s: '<br/>&nbsp; &nbsp; &nbsp; &nbsp; Event type: click ([object Object])<br/><br/>'
     ,
-      d: 200, s: " . "
+      d: 800, s: new Date() + ' - Attempting to relaunch page'
     ,
-      d: 200, s: " . "
-      ] 
+      d: 250, s: " . "
+    ,
+      d: 250, s: " . "
+    ,
+      d: 250, s: " . "
+    ,
+      d: 250, s: " . "
+    ,
+      d: 250, s: " . "
+    ,
+      d: 250, s: " . "
+    ,
+      d: 250, s: " . "
+    ,
+      d: 250, s: " . "
+    ,
+      d: 250, s: " . "
+    ,
+      d: 250, s: 'FAILED: (24) Image assets keys corrupted'
+    ,
+      d: 400, s: '<br/><br/>Switching to manual override mode. . . . . .'
+    ,
+      d: 400, s: '<br/><span style="color:green;">[MANUAL OVERRIDE MODE ACTIVE]</span>'
+    ,
+      d: 1500, s: '<br/><br/>Incoming network message:'
+    ,
+      d: 1000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>Oh, hi there.  You pressed the button, didn\'t you.'
+    ,
+      d: 1000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>I <em>knew </em>you were going to press that button!!'
+    ,
+      d: 4000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>It\'s ok, we can fix this.  I just need a little help from you to reconnect my image assets to their database keys.  Think of it as a game...'
+    ,
+      d: 400, s: ''
+    ,
+      d: 400, s: ''
+    ,
+      d: 400, s: ''
+    ] 
 
-    getTime: ->
-        currentTime = new Date()
-        hours = currentTime.getHours()
-        minutes = currentTime.getMinutes()
-        if minutes < 10
-          minutes = "0" + minutes
-        "(" + hours + ":" + minutes + ")"
 
     # run the passed function after a delay
     # mostly just a convinience method to make setTimeout easier in coffeescript
@@ -52,6 +93,7 @@
       setTimeout fn, delay
 
 
+  # start game
   $(document).ready ->
     game = new Game
     game.start()
