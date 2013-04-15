@@ -241,13 +241,21 @@ body {
   font-size: 100%;
 }
 header {
-  padding: 30px 0px 50px;
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  *zoom: 1;
+  padding: 30px 0px;
   text-align: center;
   position: relative;
-/*
-   * Note the use of the `main-color`
-   * variable and the `darken` function
-   */
+}
+header:before,
+header:after {
+  display: table;
+  content: "";
+}
+header:after {
+  clear: both;
 }
 header h2 {
   font-size: 1.2em;
@@ -275,6 +283,23 @@ header #arrow {
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
   background-size: 100%;
+}
+header #buttons {
+  position: relative;
+  margin: auto;
+  width: 340px;
+  height: 106.25px;
+  background-image: url("/images/buttons.jpg");
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+}
+header #buttons a {
+  width: 27%;
+  height: 100%;
+  display: block;
+  float: left;
+  margin: 0 3%;
 }
 #content {
   width: 940px;
@@ -375,6 +400,9 @@ footer:after {
   top: 40px;
   margin-left: 120px;
 }
+.technical #buttons {
+  background-position: 0 0;
+}
 .technical #creative-content {
   height: 0px;
   overflow: hidden;
@@ -428,6 +456,9 @@ footer:after {
   margin-left: -400px;
   background-position: 0 100%;
 }
+.creative #buttons {
+  background-position: 0 100%;
+}
 .creative #technical-content {
   height: 0px;
   overflow: hidden;
@@ -436,4 +467,13 @@ footer:after {
   background: #555;
   width: 100%;
   color: #fff;
+}
+#page {
+  display: none;
+}
+#about {
+  font: 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucida Console', 'monospace';
+  font-size: 0.8em;
+  background-color: #000;
+  height: 500px;
 }

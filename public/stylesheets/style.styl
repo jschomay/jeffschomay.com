@@ -88,7 +88,8 @@ body
   font-size 100%
 
 header
-  padding 30px 0px 50px
+  $container-fixed()
+  padding 30px 0px
   text-align center
   position relative
 
@@ -98,11 +99,6 @@ header
     a
       text-decoration none
 
-  /*
-   * Note the use of the `main-color`
-   * variable and the `darken` function
-   */
-  // border-bottom 1px solid darken(main-color, 30%)
 
   #switch
     cursor pointer
@@ -120,6 +116,21 @@ header
     height (@width / 4)
     background-image url('/images/arrows.jpg')
     background-size 100%
+
+  #buttons
+    position relative
+    margin auto
+    width 340px
+    height (@width / 3.2)
+    background-image url('/images/buttons.jpg')
+    background-size 100%
+
+    a
+      width 27%
+      height 100%
+      display block
+      float left
+      margin 0 3%
 
 #content
   $container-fixed()
@@ -179,6 +190,9 @@ technical-font = 1em font-family 'Source Code Pro', 'Monaco', 'Consolas', 'Lucid
   #arrow
     top 40px
     margin-left 120px
+
+  #buttons
+    background-position 0 0
 
   #creative-content
     // visibility hidden
@@ -240,6 +254,9 @@ creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Fa
     margin-left -400px
     background-position 0 100%
 
+  #buttons
+    background-position 0 100%
+
   #technical-content
     // visibility hidden
     height 0px
@@ -250,3 +267,12 @@ creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Fa
     width 100%
     color white
 
+
+// about
+#page
+  display none
+#about
+  font technical-font
+  font-size .8em
+  background-color black
+  height 500px
