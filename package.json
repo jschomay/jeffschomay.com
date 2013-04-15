@@ -13,8 +13,7 @@
     "jade": "*",
     "stylus": "*",
     "nib": "*",
-    "markdown": "*",
-    "bootstrap-stylus": "https://github.com/Acquisio/bootstrap-stylus.git"
+    "markdown": "*"
 
   }
 }
