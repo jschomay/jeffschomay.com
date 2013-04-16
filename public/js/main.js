@@ -10,9 +10,12 @@ $(document).ready(function() {
   });
   $switch = $('#switch');
   $body = $('body');
-  return $switch.on('click', function(e) {
+  $switch.on('click', function(e) {
     if (($body.hasClass('technical') && e.pageX > document.width / 2) || ($body.hasClass('creative') && e.pageX < document.width / 2)) {
       return $body.toggleClass('technical creative');
     }
+  });
+  return $('#dont-push').on('click', function() {
+    return game.start();
   });
 });

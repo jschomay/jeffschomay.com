@@ -82,10 +82,10 @@ footer:after{clear:both}
 .creative #buttons{background-position:0 100%}
 .creative #technical-content{height:0;overflow:hidden}
 .creative footer{background:#555;width:100%;color:#fff}
-#page{display:none}
-#about{font:1em font-family 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-size:.8em;background-color:#000;}
-#about .fragment{width:75px;height:75px;margin:10px}
-#about .full-image-wrapper{margin:10px;}
-#about .full-image-wrapper .full-image{max-width:90%;overflow:hidden;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}
-#about .key{cursor:pointer;color:#add8e6;}
-#about .key:hover{color:#fff}
+.game-mode{background:#000;color:#fff}
+#stage{font:1em font-family 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-size:.8em;}
+#stage .fragment{width:75px;height:75px;margin:10px}
+#stage .full-image-wrapper{margin:10px;}
+#stage .full-image-wrapper .full-image{max-width:90%;overflow:hidden;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}
+#stage .key{cursor:pointer;color:#add8e6;}
+#stage .key:hover{color:#fff}
