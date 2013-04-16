@@ -18,6 +18,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     function Game() {
       this.render = __bind(this.render, this);
       this.runSequence = __bind(this.runSequence, this);
+      this.checkKey = __bind(this.checkKey, this);
       this.renderImageFragment = __bind(this.renderImageFragment, this);
     }
 
@@ -26,7 +27,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
 
       console.log("game started ", getTime());
       this.$stage = $('#about');
-      this.currentImageFragmentNumber = 1;
+      this.currentImageFragmentNumber = 0;
       this.remainingKeys = this.keys;
       return this.delay(1000, function() {
         return _this.runSequence(_this.introSequence, 0, function() {
@@ -40,30 +41,24 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     };
 
     Game.prototype.renderImageFragment = function(cb) {
-      var f, k, key, keys, output, _i, _j, _len, _len1, _ref, _ref1;
+      var f, k, key, output, _i, _len, _ref,
+        _this = this;
 
-      f = this.assets[this.currentImageFragmentNumber - 1];
-      keys = '';
+      f = this.images[this.currentImageFragmentNumber];
+      output = [
+        {
+          s: '<br/><br/><span style="color:green;">[LOADING IMAGE FRAGMENT ' + (this.currentImageFragmentNumber + 1) + ']</span>'
+        }, {
+          d: 1000,
+          s: '<br/><div class="fragment" style="background: url(images/' + f.src + '); background-position: ' + f.backgroundPosition + '">' + f.key + '</div><br/>Asset keys:'
+        }
+      ];
       _ref = this.remainingKeys;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         key = _ref[_i];
-        keys += '<span class="key" id="' + key + '">["' + key + '"]</span>, ';
-      }
-      keys = keys.slice(0, -2);
-      output = [
-        {
-          s: '<br/><br/><span style="color:green;">[LOADING IMAGE FRAGMENT ' + this.currentImageFragmentNumber + ']</span>'
-        }, {
-          d: 1000,
-          s: '<br/><img class="fragment" src="' + f.src + '" border="1" alt="' + f.key + '"/><br/>Asset keys:'
-        }
-      ];
-      _ref1 = this.remainingKeys;
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        key = _ref1[_j];
         k = $('<span class="key" id="' + key + '">["' + key + '"]</span>');
         k.on('click', function(e) {
-          return console.log(e.target.id);
+          return _this.checkKey(e.target.id);
         });
         output.push({
           d: 0,
@@ -71,6 +66,15 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         });
       }
       return this.runSequence(output, 0, cb);
+    };
+
+    Game.prototype.checkKey = function(id) {
+      if (id === this.images[this.currentImageFragmentNumber].key) {
+        console.log("right");
+        return $('.key').off();
+      } else {
+        return console.log("try again");
+      }
     };
 
     Game.prototype.runSequence = function(sequence, step, cb) {
@@ -170,26 +174,31 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       }
     ];
 
-    Game.prototype.assets = [
+    Game.prototype.images = [
       {
         src: 'images/unicycle.jpg',
-        key: 'uniycle',
+        backgroundPosition: '-20px -50px',
+        key: 'unicycle',
         info: 'Yup, I ride a 6 foot tall unicycle for fun and professionally :)'
       }, {
         src: 'images/juggler.jpg',
+        backgroundPosition: '-20px -50px',
         key: 'juggler',
         info: 'I was a professional juggler for many years'
       }, {
         src: 'images/eagle_scout.jpg',
+        backgroundPosition: '-20px -50px',
         key: 'eagle_scout',
         info: 'Many people don\'t know I\'m an Eagle Scout.'
       }, {
         src: 'images/origami.jpg',
+        backgroundPosition: '-20px -50px',
         key: 'origami',
         info: 'I\'ve made origami since I was 7 years old'
       }, {
         src: 'images/travel.jpg',
         key: 'travel',
+        backgroundPosition: '-20px -50px',
         info: 'I lived in Europe for 5 years when I was young, and have traveled around the world'
       }
     ];
@@ -197,7 +206,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     Game.prototype.keys = ["origami", "juggler", "scuba_dive", "eagle_scout", "unicycle", "travel", "sky_diving"];
 
     Game.prototype.delay = function(delay, fn) {
-      return setTimeout(fn, delay);
+      return setTimeout(fn, 0);
     };
 
     return Game;

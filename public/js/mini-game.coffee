@@ -15,7 +15,7 @@
       console.log "game started ", getTime()
 
       @$stage = $ '#about'
-      @currentImageFragmentNumber= 1
+      @currentImageFragmentNumber = 0
       @remainingKeys = @keys
 
       # kick off animation sequence after 1s...
@@ -31,12 +31,12 @@
 
     # queues up the proper image and keys and renders them
     renderImageFragment: (cb) =>
-      f = @assets[@currentImageFragmentNumber-1]
+      f = @images[@currentImageFragmentNumber]
 
       output = [
-        s: '<br/><br/><span style="color:green;">[LOADING IMAGE FRAGMENT '+@currentImageFragmentNumber+']</span>'
+        s: '<br/><br/><span style="color:green;">[LOADING IMAGE FRAGMENT ' + ( @currentImageFragmentNumber + 1 ) + ']</span>'
       ,
-        d: 1000, s: '<br/><img class="fragment" src="'+f.src+'" border="1" alt="'+f.key+'"/><br/>Asset keys:'
+        d: 1000, s: '<br/><div class="fragment" style="background: url(images/'+f.src+'); background-position: '+f.backgroundPosition+'">'+f.key+'</div><br/>Asset keys:'
       ]
 
       # add keys to output
@@ -49,6 +49,25 @@
           s: [' ', k]
 
       @runSequence output, 0, cb
+
+    checkKey: (id) =>
+      if id is @images[@currentImageFragmentNumber].key
+        #correct
+        console.log "right"
+        # unbind events on finished line feeds
+        $('.key').off()
+
+        # linefeed congratulations and info
+        #...
+
+        # send up next image fragment
+        # or go to end state if we are finished
+        #...
+      else
+        #wrong
+        console.log "try again"
+        # linefeed miss notice
+        #...
 
     # run render function on each step in the animation sequence,
     # and call the next step in line with it's dely
@@ -125,25 +144,30 @@
     ]
 
     # images used in matching
-    assets: [
+    images: [
       src: 'images/unicycle.jpg'
-      key: 'uniycle'
+      backgroundPosition: '-20px -50px'
+      key: 'unicycle'
       info: 'Yup, I ride a 6 foot tall unicycle for fun and professionally :)'
     ,
       src: 'images/juggler.jpg'
+      backgroundPosition: '-20px -50px'
       key: 'juggler'
       info: 'I was a professional juggler for many years'
     ,
       src: 'images/eagle_scout.jpg'
+      backgroundPosition: '-20px -50px'
       key: 'eagle_scout'
       info: 'Many people don\'t know I\'m an Eagle Scout.'
     ,
       src: 'images/origami.jpg'
+      backgroundPosition: '-20px -50px'
       key: 'origami'
       info: 'I\'ve made origami since I was 7 years old'
     ,
       src: 'images/travel.jpg'
       key: 'travel'
+      backgroundPosition: '-20px -50px'
       info: 'I lived in Europe for 5 years when I was young, and have traveled around the world'
     ]
 
@@ -157,7 +181,7 @@
     # run the passed function after a delay
     # mostly just a convinience method to make setTimeout easier in coffeescript
     delay: (delay, fn) ->
-      setTimeout fn, delay
+      setTimeout fn, 0#delay
 
 
   # start game
