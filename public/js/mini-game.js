@@ -1,22 +1,12 @@
 var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 (function() {
-  var Game, getTime;
+  var Game;
 
-  getTime = function() {
-    var currentTime, hours, minutes;
-
-    currentTime = new Date();
-    hours = currentTime.getHours();
-    minutes = currentTime.getMinutes();
-    if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-    return "(" + hours + ":" + minutes + ")";
-  };
   Game = (function() {
     function Game() {
       this.checkKey = __bind(this.checkKey, this);
+      this.linefeed = __bind(this.linefeed, this);
       this.render = __bind(this.render, this);
       this.runSequence = __bind(this.runSequence, this);
       this.renderImageFragment = __bind(this.renderImageFragment, this);
@@ -25,19 +15,37 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     Game.prototype.start = function() {
       var _this = this;
 
-      console.log("game started ", getTime());
+      console.log("game started ", this.getTime());
       this.$stage = $('#about');
       this.currentImageFragmentNumber = 0;
       this.remainingKeys = this.keys;
       return this.delay(1000, function() {
         return _this.runSequence(_this.introSequence, 0, function() {
-          return _this.delay(6000, _this.renderImageFragment(function() {
-            return _this.delay(1000, function() {
-              return _this.runSequence(_this.sequence2, 0);
+          return _this.delay(6000, function() {
+            return _this.renderImageFragment(function() {
+              return _this.delay(1000, function() {
+                return _this.runSequence(_this.sequence2, 0);
+              });
             });
-          }));
+          });
         });
       });
+    };
+
+    Game.prototype.getTime = function() {
+      var currentTime, hours, minutes, seconds;
+
+      currentTime = new Date();
+      hours = currentTime.getHours();
+      minutes = currentTime.getMinutes();
+      seconds = currentTime.getSeconds();
+      if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+      return "(" + hours + ":" + minutes + ":" + seconds + ")";
     };
 
     Game.prototype.renderImageFragment = function(cb) {
@@ -83,7 +91,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     };
 
     Game.prototype.delay = function(delay, fn) {
-      return setTimeout(fn, 0);
+      return setTimeout(fn, delay);
     };
 
     Game.prototype.render = function(data) {
@@ -91,25 +99,31 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     };
 
     Game.prototype.linefeed = function(data) {
+      if (typeof data === 'string') {
+        data = data.replace('getTime', this.getTime());
+        data = data.replace('getDate', new Date());
+      }
       this.$stage.append(data);
       return $(window).scrollTop($(document).height());
     };
 
     Game.prototype.checkKey = function(id) {
-      var output,
+      var i, output,
         _this = this;
 
       if (id === this.images[this.currentImageFragmentNumber].key) {
         $('.key').off();
+        i = $.inArray(id, this.remainingKeys);
+        this.remainingKeys.splice(i, 1);
         output = [
           {
-            s: '<br/>User input: ' + id + '<br/><span style="color: green;">Success: Valid asset key match.  Relinking image.'
+            s: '<br/><br/>User input: ' + id + '<br/><span style="color: green;">Success: Valid asset key match.  Relinking image.'
           }, {
             d: 500,
-            s: '<br/><br/><img src="' + this.images[this.currentImageFragmentNumber].src + '"/>'
+            s: '<br/><br/><img class="full-image" src="' + this.images[this.currentImageFragmentNumber].src + '"/>'
           }, {
-            d: 1000,
-            s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>' + this.correctResponses[Math.floor(Math.random() * this.correctResponses.length)] + ' ' + this.images[this.currentImageFragmentNumber].info
+            d: 800,
+            s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + this.correctResponses[Math.floor(Math.random() * this.correctResponses.length)] + ' ' + this.images[this.currentImageFragmentNumber].info
           }
         ];
         return this.runSequence(output, 0, function() {
@@ -117,7 +131,14 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
             _this.currentImageFragmentNumber++;
             return _this.delay(2000, _this.renderImageFragment);
           } else {
-            return console.log('game over, you win');
+            return _this.delay(2000, function() {
+              return _this.runSequence(_this.finalSequence, 0, function() {
+                console.log("now back to your regularly scheduled programe...", _this.getTime());
+                return _this.delay(3000, function() {
+                  return _this.$stage.remove();
+                });
+              });
+            });
           }
         });
       } else {
@@ -125,8 +146,8 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
           {
             s: '<br/><br/>User input: ' + id + '<br/><span style="color: red;">Error:</span> Non-matching key, unable to link asset'
           }, {
-            d: 1000,
-            s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>' + this.missResponses[Math.floor(Math.random() * this.missResponses.length)]
+            d: 800,
+            s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + this.missResponses[Math.floor(Math.random() * this.missResponses.length)]
           }
         ];
         return this.runSequence(output, 0);
@@ -136,7 +157,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     Game.prototype.introSequence = [
       {
         d: 200,
-        s: '<br/>' + new Date() + ' - <span style="color: red;">ERROR (42): site interrupt - User pressed the wrong button</span>'
+        s: '<br/>' + 'getDate' + ' - <span style="color: red;">ERROR (42): site interrupt - User pressed the wrong button</span>'
       }, {
         d: 200,
         s: '<br/>&nbsp; &nbsp; &nbsp; &nbsp; Button id: #dont-push (index.html:32:17)'
@@ -145,7 +166,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         s: '<br/>&nbsp; &nbsp; &nbsp; &nbsp; Event type: click ([object Object])<br/><br/>'
       }, {
         d: 1900,
-        s: new Date() + ' - Attempting to relaunch page'
+        s: 'getDate' + ' - Attempting to relaunch page'
       }, {
         d: 250,
         s: " . "
@@ -187,23 +208,37 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         s: '<br/><br/>Incoming network message:'
       }, {
         d: 1000,
-        s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>Oh, hi there.  You pressed the button, didn\'t you.'
+        s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>Oh, hi there.  You pressed the button, didn\'t you.'
       }, {
         d: 3000,
-        s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>I <em>knew </em>you were going to press that button!!'
+        s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>I <em>knew </em>you were going to press that button!!'
       }, {
         d: 3500,
-        s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>It\'s ok, we can fix this.  I just need a little help from you to reconnect my image assets to their database keys.  Think of it as a game.  Just follow along.  One second...'
+        s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>It\'s ok, we can fix this.  I just need a little help from you to reconnect my image assets to their database keys.  Think of it as a game.  Just follow along.  One second...'
       }
     ];
 
     Game.prototype.sequence2 = [
       {
-        d: 2000,
-        s: '<br/><br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay - </span>Ok, it\'s your turn.  Click on the asset key you think this image fragment fits with.'
+        s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Ok, it\'s your turn.  Click on the asset key you think this image fragment fits with.'
       }, {
         d: 400,
         s: '<br/><br/>Waiting for user input...'
+      }
+    ];
+
+    Game.prototype.finalSequence = [
+      {
+        s: '<br/><br/><span style="color:green;">[IMAGE ASSET KEYS SUCCESSFULLY REBUILT]</span>'
+      }, {
+        d: 500,
+        s: '<br/>' + 'getDate' + ' - Asset keys varified.  OK to relaunch site'
+      }, {
+        d: 3000,
+        s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Nice!  Looks like you fixed all the image asset keys, thanks for your help!'
+      }, {
+        d: 4000,
+        s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>I\'ll send  you back to the main site in just a second... bye!'
       }
     ];
 
@@ -238,7 +273,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
 
     Game.prototype.keys = ["origami", "juggler", "scuba_dive", "eagle_scout", "unicycle", "travel", "sky_diving"];
 
-    Game.prototype.correctResponses = ['Nice, you got it.', 'That\'s right!', 'You\'re good at this.', 'That\'s a match.', 'Correct.', 'Well done.'];
+    Game.prototype.correctResponses = ['Nice, you got it.', 'That\'s right!', 'That\'s a match.', 'Correct.', 'Well done.'];
 
     Game.prototype.missResponses = ['Looks like you didn\'t find the right match, try again.', 'Wrong one.  Try again.', 'That\'s not it, try again.', 'Try a different one.'];
 

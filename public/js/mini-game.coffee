@@ -1,18 +1,9 @@
 (->
 
-  # convinience function
-  getTime = ->
-    currentTime = new Date()
-    hours = currentTime.getHours()
-    minutes = currentTime.getMinutes()
-    if minutes < 10
-      minutes = "0" + minutes
-    "(" + hours + ":" + minutes + ")"
-
   # main game code
   class Game
     start: ->
-      console.log "game started ", getTime()
+      console.log "game started ", @getTime()
 
       @$stage = $ '#about'
       @currentImageFragmentNumber = 0
@@ -22,11 +13,23 @@
       @delay 1000, =>
         @runSequence @introSequence, 0, =>
           # then run renderImageFragment callback when done (wait 6s first)...
-          @delay 6000, @renderImageFragment =>
-            # then run sequence2 after 1s
-            @delay 1000, =>
-              @runSequence @sequence2, 0
-              # then do nothing (wait for click event)
+          @delay 6000, =>
+            @renderImageFragment =>
+              # then run sequence2 after 1s
+              @delay 1000, =>
+                @runSequence @sequence2, 0
+                # then do nothing (wait for click event)
+  
+    getTime: ->
+      currentTime = new Date()
+      hours = currentTime.getHours()
+      minutes = currentTime.getMinutes()
+      seconds = currentTime.getSeconds()
+      if minutes < 10
+        minutes = "0" + minutes
+      if seconds < 10
+        seconds = "0" + seconds
+      "(" + hours + ":" + minutes + ":" + seconds + ")"
 
 
     # queues up the proper image and keys and renders them
@@ -64,7 +67,7 @@
     # run the passed function after a delay
     # mostly just a convinience method to make setTimeout easier in coffeescript
     delay: (delay, fn) ->
-      setTimeout fn, 0#delay
+      setTimeout fn, delay
 
     # render() is just a proxy, so you could switch out render functions
     render: (data) =>
@@ -73,7 +76,12 @@
 
     # this render function just appends the current string to the 
     # end of the page and scrolls to the bottom if needed
-    linefeed: (data) ->
+    linefeed: (data) =>
+      # replace "getTime" and "getDate" with correct time/date at render
+      if typeof data is 'string'
+        data = data.replace 'getTime', @getTime()
+        data = data.replace 'getDate', new Date()
+
       @$stage.append data
       # scroll page to bottom
       $(window).scrollTop($(document).height())
@@ -85,15 +93,16 @@
         $('.key').off()
 
         # remove key from @remainingKeys
-        # a.splice(a.indexOf('four'),1)
+        i = $.inArray id, @remainingKeys
+        @remainingKeys.splice i, 1
 
         # linefeed success message, image and info
         output = [
-          s: '<br/>User input: '+id+'<br/><span style="color: green;">Success: Valid asset key match.  Relinking image.'
+          s: '<br/><br/>User input: '+id+'<br/><span style="color: green;">Success: Valid asset key match.  Relinking image.'
         ,
-          d: 500, s: '<br/><br/><img src="'+@images[@currentImageFragmentNumber].src+'"/>'
+          d: 500, s: '<br/><br/><img class="full-image" src="'+@images[@currentImageFragmentNumber].src+'"/>'
         ,
-          d: 1000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>' + @correctResponses[Math.floor(Math.random()*@correctResponses.length)] + ' ' + @images[@currentImageFragmentNumber].info
+          d: 800, s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + @correctResponses[Math.floor(Math.random()*@correctResponses.length)] + ' ' + @images[@currentImageFragmentNumber].info
         ]
 
         @runSequence output, 0, =>
@@ -103,14 +112,19 @@
             @delay 2000, @renderImageFragment
           else
             # we are done
-            console.log 'game over, you win'
+            @delay 2000, =>
+              @runSequence @finalSequence, 0, =>
+                # tear down this view, put back the main one
+                console.log "now back to your regularly scheduled programe...", @getTime()
+                @delay 5000, =>
+                  @$stage.remove()
 
       else
         # linefeed miss notice
         output = [
           s: '<br/><br/>User input: '+id+'<br/><span style="color: red;">Error:</span> Non-matching key, unable to link asset'
         , 
-          d: 1000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>' + @missResponses[Math.floor(Math.random()*@missResponses.length)]
+          d: 800, s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + @missResponses[Math.floor(Math.random()*@missResponses.length)]
         ]
 
         @runSequence output, 0
@@ -118,13 +132,13 @@
 
     # first animation sequence with delay and string
     introSequence: [
-      d: 200, s: '<br/>' + new Date() + ' - <span style="color: red;">ERROR (42): site interrupt - User pressed the wrong button</span>'
+      d: 200, s: '<br/>' + 'getDate' + ' - <span style="color: red;">ERROR (42): site interrupt - User pressed the wrong button</span>'
     ,
       d: 200, s: '<br/>&nbsp; &nbsp; &nbsp; &nbsp; Button id: #dont-push (index.html:32:17)'
     ,
       d: 200, s: '<br/>&nbsp; &nbsp; &nbsp; &nbsp; Event type: click ([object Object])<br/><br/>'
     ,
-      d: 1900, s: new Date() + ' - Attempting to relaunch page'
+      d: 1900, s: 'getDate' + ' - Attempting to relaunch page'
     ,
       d: 250, s: " . "
     ,
@@ -152,18 +166,29 @@
     ,
       d: 1500, s: '<br/><br/>Incoming network message:'
     ,
-      d: 1000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>Oh, hi there.  You pressed the button, didn\'t you.'
+      d: 1000, s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>Oh, hi there.  You pressed the button, didn\'t you.'
     ,
-      d: 3000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>I <em>knew </em>you were going to press that button!!'
+      d: 3000, s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>I <em>knew </em>you were going to press that button!!'
     ,
-      d: 3500, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>It\'s ok, we can fix this.  I just need a little help from you to reconnect my image assets to their database keys.  Think of it as a game.  Just follow along.  One second...'
+      d: 3500, s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>It\'s ok, we can fix this.  I just need a little help from you to reconnect my image assets to their database keys.  Think of it as a game.  Just follow along.  One second...'
     ]
 
-    # plays afterfirst image fragment is displayed
+    # plays after first image fragment is displayed
     sequence2:[
-      d: 2000, s: '<br/><br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay - </span>Ok, it\'s your turn.  Click on the asset key you think this image fragment fits with.'
+      s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Ok, it\'s your turn.  Click on the asset key you think this image fragment fits with.'
     ,
       d: 400, s: '<br/><br/>Waiting for user input...'
+    ]
+
+    # plays after all fragments have been correctly matched
+    finalSequence:[
+      s: '<br/><br/><span style="color:green;">[IMAGE ASSET KEYS SUCCESSFULLY REBUILT]</span>'
+    ,
+      d: 500, s: '<br/>' + 'getDate' + ' - Asset keys varified.  OK to relaunch site'
+    ,
+      d: 3500, s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Nice!  Looks like you fixed all the image asset keys, thanks for your help!'
+    ,
+      d: 4500, s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>I\'ll send  you back to the main site in just a second... bye!'
     ]
 
     # images used in matching
@@ -202,7 +227,6 @@
     correctResponses: [
       'Nice, you got it.'
       'That\'s right!'
-      'You\'re good at this.'
       'That\'s a match.'
       'Correct.'
       'Well done.'

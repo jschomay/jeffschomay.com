@@ -270,9 +270,27 @@ creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Fa
 
 // about
 #page
-  // display none
+  display none
 #about
   font technical-font
   font-size .8em
   background-color black
-  height 500px
+  // height 800px
+
+  .fragment
+    width 75px
+    height 75px
+    margin 10px
+    border 1px solid gray
+    background-image url('/images/switch.jpg') !important
+
+  .full-image
+    max-width 90%
+    border 1px solid gray
+    margin 10px
+
+  .key
+    cursor pointer
+    color lightblue
+    &:hover
+      color white
