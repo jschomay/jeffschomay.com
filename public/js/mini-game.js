@@ -13,13 +13,14 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     }
 
     Game.prototype.start = function() {
-      var _this = this;
+      var i, img, _i, _len, _ref, _results,
+        _this = this;
 
       console.log("game started ", this.getTime());
       this.$stage = $('#about');
       this.currentImageFragmentNumber = 0;
       this.remainingKeys = this.keys;
-      return this.delay(1000, function() {
+      this.delay(1000, function() {
         return _this.runSequence(_this.introSequence, 0, function() {
           return _this.delay(6000, function() {
             return _this.renderImageFragment(function() {
@@ -30,6 +31,15 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
           });
         });
       });
+      _ref = this.images;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        img = _ref[_i];
+        i = new Image();
+        i.src = img.src;
+        _results.push(i = null);
+      }
+      return _results;
     };
 
     Game.prototype.getTime = function() {
@@ -57,7 +67,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         {
           s: '<br/><br/><span style="color:lightgreen;">[LOADING IMAGE FRAGMENT ' + (this.currentImageFragmentNumber + 1) + ']</span>'
         }, {
-          d: 1000,
+          d: 2000,
           s: '<br/><div class="fragment" style="background: url(' + f.src + '); background-position: ' + f.backgroundPosition + '"></div><br/>Asset keys:'
         }
       ];
@@ -73,6 +83,10 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
           s: [' ', k]
         });
       }
+      output.push({
+        d: 400,
+        s: '<br/><br/>Waiting for user input...'
+      });
       return this.runSequence(output, 0, cb);
     };
 
@@ -91,7 +105,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     };
 
     Game.prototype.delay = function(delay, fn) {
-      return setTimeout(fn, delay);
+      return setTimeout(fn, delay / 1);
     };
 
     Game.prototype.render = function(data) {
@@ -108,31 +122,44 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     };
 
     Game.prototype.checkKey = function(id) {
-      var i, output,
+      var $image, $imageWrapper, i, output,
         _this = this;
 
       if (id === this.images[this.currentImageFragmentNumber].key) {
         $('.key').off();
         i = $.inArray(id, this.remainingKeys);
         this.remainingKeys.splice(i, 1);
+        $image = $('<div class="full-image"></div>');
+        $image.css({
+          'background-image': 'url(' + this.images[this.currentImageFragmentNumber].src + ')',
+          width: this.images[this.currentImageFragmentNumber].width,
+          height: 0
+        });
+        $imageWrapper = $('<div class="full-image-wrapper"></div>');
+        $imageWrapper.css({
+          height: this.images[this.currentImageFragmentNumber].height
+        });
+        $imageWrapper.append($image);
+        this.delay(1200, function() {
+          return $image.animate({
+            height: _this.images[_this.currentImageFragmentNumber].height
+          }, 2000);
+        });
         output = [
           {
             s: '<br/><br/>User input: ' + id + '<br/><span style="color: lightgreen;">Success: Valid asset key match.  Relinking image.'
           }, {
-            d: 500,
-            s: '<br/><br/><img class="full-image" src="' + this.images[this.currentImageFragmentNumber].src + '"/>'
+            d: 1200,
+            s: ['<br/><br/>', $imageWrapper]
           }, {
-            d: 800,
+            d: 2800,
             s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + this.correctResponses[Math.floor(Math.random() * this.correctResponses.length)] + ' ' + this.images[this.currentImageFragmentNumber].info
-          }, {
-            d: 400,
-            s: '<br/><br/>Waiting for user input...'
           }
         ];
         return this.runSequence(output, 0, function() {
           if (_this.currentImageFragmentNumber !== (_this.images.length - 1)) {
             _this.currentImageFragmentNumber++;
-            return _this.delay(4000, _this.renderImageFragment);
+            return _this.delay(3000, _this.renderImageFragment);
           } else {
             return _this.delay(2000, function() {
               return _this.runSequence(_this.finalSequence, 0, function() {
@@ -150,7 +177,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
             s: '<br/><br/>User input: ' + id + '<br/><span style="color: red;">Error:</span> Non-matching key, unable to link asset'
           }, {
             d: 800,
-            s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + this.missResponses[Math.floor(Math.random() * this.missResponses.length)]
+            s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + this.missResponses[Math.floor(Math.random() * this.missResponses.length)]
           }
         ];
         return this.runSequence(output, 0);
@@ -224,9 +251,6 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     Game.prototype.sequence2 = [
       {
         s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Ok, it\'s your turn.  Click on the asset key you think this image fragment fits with.'
-      }, {
-        d: 400,
-        s: '<br/><br/>Waiting for user input...'
       }
     ];
 
@@ -248,28 +272,38 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     Game.prototype.images = [
       {
         src: 'images/unicycle.jpg',
+        width: 588,
+        height: 588,
         backgroundPosition: '-275px -440px',
         key: 'unicycle',
         info: 'Yup, I ride a 6 foot tall unicycle for fun and professionally :)'
       }, {
+        src: 'images/origami.jpg',
+        width: 500,
+        height: 462,
+        backgroundPosition: '-208px -315px',
+        key: 'origami',
+        info: 'I\'ve made origami since I was 7 years old'
+      }, {
         src: 'images/juggler.jpg',
+        width: 300,
+        height: 450,
         backgroundPosition: '-67px -43px',
         key: 'juggler',
         info: 'I was a professional juggler for many years'
       }, {
         src: 'images/eagle_scout.jpg',
+        width: 250,
+        height: 320,
         backgroundPosition: '-135px -90px',
         key: 'eagle_scout',
         info: 'Many people don\'t know I\'m an Eagle Scout.'
       }, {
-        src: 'images/origami.jpg',
-        backgroundPosition: '-208px -315px',
-        key: 'origami',
-        info: 'I\'ve made origami since I was 7 years old'
-      }, {
         src: 'images/travel.jpg',
-        key: 'travel',
+        width: 545,
+        height: 409,
         backgroundPosition: '-94px -117px',
+        key: 'travel',
         info: 'I lived in Europe for 5 years when I was young, and have traveled around the world'
       }
     ];

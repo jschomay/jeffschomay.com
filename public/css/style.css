@@ -84,7 +84,8 @@ footer:after{clear:both}
 .creative footer{background:#555;width:100%;color:#fff}
 #page{display:none}
 #about{font:1em font-family 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-size:.8em;background-color:#000;}
-#about .fragment{width:75px;height:75px;margin:10px;border:1px solid #808080}
-#about .full-image{max-width:90%;border:1px solid #808080;margin:10px}
+#about .fragment{width:75px;height:75px;margin:10px}
+#about .full-image-wrapper{margin:10px;}
+#about .full-image-wrapper .full-image{max-width:90%;overflow:hidden;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}
 #about .key{cursor:pointer;color:#add8e6;}
 #about .key:hover{color:#fff}

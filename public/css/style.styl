@@ -281,12 +281,13 @@ creative-font = 1.1em font-family 'Garamond', 'Baskerville', 'Baskerville Old Fa
     width 75px
     height 75px
     margin 10px
-    border 1px solid gray
 
-  .full-image
-    max-width 90%
-    border 1px solid gray
+  .full-image-wrapper
     margin 10px
+    .full-image
+      max-width 90%
+      overflow  hidden
+      background-size 100%
 
   .key
     cursor pointer

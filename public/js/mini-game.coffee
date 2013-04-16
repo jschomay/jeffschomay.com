@@ -19,6 +19,12 @@
               @delay 1000, =>
                 @runSequence @sequence2, 0
                 # then do nothing (wait for click event)
+
+      # preload images while the sequence is running
+      for img in @images
+        i = new Image()
+        i.src = img.src
+        i = null
   
     getTime: ->
       currentTime = new Date()
@@ -39,7 +45,7 @@
       output = [
         s: '<br/><br/><span style="color:lightgreen;">[LOADING IMAGE FRAGMENT ' + ( @currentImageFragmentNumber + 1 ) + ']</span>'
       ,
-        d: 1000, s: '<br/><div class="fragment" style="background: url('+f.src+'); background-position: '+f.backgroundPosition+'"></div><br/>Asset keys:'
+        d: 2000, s: '<br/><div class="fragment" style="background: url('+f.src+'); background-position: '+f.backgroundPosition+'"></div><br/>Asset keys:'
       ]
 
       # add keys to output
@@ -50,6 +56,9 @@
         output.push 
           d: 0
           s: [' ', k]
+
+      output.push 
+          d: 400, s: '<br/><br/>Waiting for user input...'
 
       @runSequence output, 0, cb
 
@@ -67,7 +76,7 @@
     # run the passed function after a delay
     # mostly just a convinience method to make setTimeout easier in coffeescript
     delay: (delay, fn) ->
-      setTimeout fn, delay
+      setTimeout fn, (delay/1) # divide by more or less than 1 for faster/slower
 
     # render() is just a proxy, so you could switch out render functions
     render: (data) =>
@@ -96,15 +105,29 @@
         i = $.inArray id, @remainingKeys
         @remainingKeys.splice i, 1
 
+        # prep the image so we can animate it
+        $image = $('<div class="full-image"></div>')
+        $image.css
+          'background-image': 'url(' + @images[@currentImageFragmentNumber].src+ ')'
+          width: @images[@currentImageFragmentNumber].width
+          height: 0
+       
+        $imageWrapper = $('<div class="full-image-wrapper"></div>')
+        $imageWrapper.css
+          height: @images[@currentImageFragmentNumber].height
+        $imageWrapper.append $image
+
+        # animate the image height as soon as it is put on screen
+        @delay 1200, =>
+          $image.animate({height: @images[@currentImageFragmentNumber].height}, 2000)
+        
         # linefeed success message, image and info
         output = [
           s: '<br/><br/>User input: '+id+'<br/><span style="color: lightgreen;">Success: Valid asset key match.  Relinking image.'
         ,
-          d: 500, s: '<br/><br/><img class="full-image" src="'+@images[@currentImageFragmentNumber].src+'"/>'
+          d: 1200, s: ['<br/><br/>', $imageWrapper]
         ,
-          d: 800, s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + @correctResponses[Math.floor(Math.random()*@correctResponses.length)] + ' ' + @images[@currentImageFragmentNumber].info
-        ,
-          d: 400, s: '<br/><br/>Waiting for user input...'
+          d: 2300, s: '<br/>><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + @correctResponses[Math.floor(Math.random()*@correctResponses.length)] + ' ' + @images[@currentImageFragmentNumber].info
         ]
 
         @runSequence output, 0, =>
@@ -114,11 +137,11 @@
             @delay 4000, @renderImageFragment
           else
             # we are done
-            @delay 2000, =>
+            @delay 3500, =>
               @runSequence @finalSequence, 0, =>
                 # tear down this view, put back the main one
                 console.log "now back to your regularly scheduled programe...", @getTime()
-                @delay 6000, =>
+                @delay 6500, =>
                   @$stage.remove()
 
       else
@@ -126,7 +149,7 @@
         output = [
           s: '<br/><br/>User input: '+id+'<br/><span style="color: red;">Error:</span> Non-matching key, unable to link asset'
         , 
-          d: 800, s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + @missResponses[Math.floor(Math.random()*@missResponses.length)]
+          d: 800, s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + @missResponses[Math.floor(Math.random()*@missResponses.length)]
         ]
 
         @runSequence output, 0
@@ -178,8 +201,6 @@
     # plays after first image fragment is displayed
     sequence2:[
       s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Ok, it\'s your turn.  Click on the asset key you think this image fragment fits with.'
-    ,
-      d: 400, s: '<br/><br/>Waiting for user input...'
     ]
 
     # plays after all fragments have been correctly matched
@@ -196,28 +217,38 @@
     # images used in matching
     images: [
       src: 'images/unicycle.jpg'
+      width: 588
+      height: 588
       backgroundPosition: '-275px -440px'
       key: 'unicycle'
       info: 'Yup, I ride a 6 foot tall unicycle for fun and professionally :)'
     ,
+      src: 'images/origami.jpg'
+      width: 500
+      height: 462
+      backgroundPosition: '-208px -315px'
+      key: 'origami'
+      info: 'I\'ve made origami since I was 7 years old'
+    ,
       src: 'images/juggler.jpg'
+      width: 300
+      height: 450
       backgroundPosition: '-67px -43px'
       key: 'juggler'
       info: 'I was a professional juggler for many years'
     ,
       src: 'images/eagle_scout.jpg'
+      width: 250
+      height: 320
       backgroundPosition: '-135px -90px'
       key: 'eagle_scout'
       info: 'Many people don\'t know I\'m an Eagle Scout.'
     ,
-      src: 'images/origami.jpg'
-      backgroundPosition: '-208px -315px'
-      key: 'origami'
-      info: 'I\'ve made origami since I was 7 years old'
-    ,
       src: 'images/travel.jpg'
-      key: 'travel'
+      width: 545
+      height: 409
       backgroundPosition: '-94px -117px'
+      key: 'travel'
       info: 'I lived in Europe for 5 years when I was young, and have traveled around the world'
     ]
 
