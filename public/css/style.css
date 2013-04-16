@@ -84,7 +84,7 @@ footer:after{clear:both}
 .creative footer{background:#555;width:100%;color:#fff}
 #page{display:none}
 #about{font:1em font-family 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-size:.8em;background-color:#000;}
-#about .fragment{width:75px;height:75px;margin:10px;border:1px solid #808080;background-image:url("/images/switch.jpg") !important}
+#about .fragment{width:75px;height:75px;margin:10px;border:1px solid #808080}
 #about .full-image{max-width:90%;border:1px solid #808080;margin:10px}
 #about .key{cursor:pointer;color:#add8e6;}
 #about .key:hover{color:#fff}

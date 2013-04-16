@@ -37,9 +37,9 @@
       f = @images[@currentImageFragmentNumber]
 
       output = [
-        s: '<br/><br/><span style="color:green;">[LOADING IMAGE FRAGMENT ' + ( @currentImageFragmentNumber + 1 ) + ']</span>'
+        s: '<br/><br/><span style="color:lightgreen;">[LOADING IMAGE FRAGMENT ' + ( @currentImageFragmentNumber + 1 ) + ']</span>'
       ,
-        d: 1000, s: '<br/><div class="fragment" style="background: url(images/'+f.src+'); background-position: '+f.backgroundPosition+'">'+f.key+'</div><br/>Asset keys:'
+        d: 1000, s: '<br/><div class="fragment" style="background: url('+f.src+'); background-position: '+f.backgroundPosition+'"></div><br/>Asset keys:'
       ]
 
       # add keys to output
@@ -98,25 +98,27 @@
 
         # linefeed success message, image and info
         output = [
-          s: '<br/><br/>User input: '+id+'<br/><span style="color: green;">Success: Valid asset key match.  Relinking image.'
+          s: '<br/><br/>User input: '+id+'<br/><span style="color: lightgreen;">Success: Valid asset key match.  Relinking image.'
         ,
           d: 500, s: '<br/><br/><img class="full-image" src="'+@images[@currentImageFragmentNumber].src+'"/>'
         ,
           d: 800, s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + @correctResponses[Math.floor(Math.random()*@correctResponses.length)] + ' ' + @images[@currentImageFragmentNumber].info
+        ,
+          d: 400, s: '<br/><br/>Waiting for user input...'
         ]
 
         @runSequence output, 0, =>
           unless @currentImageFragmentNumber is (@images.length - 1)
             # send up next image fragment
             @currentImageFragmentNumber++
-            @delay 2000, @renderImageFragment
+            @delay 4000, @renderImageFragment
           else
             # we are done
             @delay 2000, =>
               @runSequence @finalSequence, 0, =>
                 # tear down this view, put back the main one
                 console.log "now back to your regularly scheduled programe...", @getTime()
-                @delay 5000, =>
+                @delay 6000, =>
                   @$stage.remove()
 
       else
@@ -132,13 +134,13 @@
 
     # first animation sequence with delay and string
     introSequence: [
-      d: 200, s: '<br/>' + 'getDate' + ' - <span style="color: red;">ERROR (42): site interrupt - User pressed the wrong button</span>'
+      d: 200, s: '<br/>' + 'getDate' + ' - <span style="color: red;">ERROR (42): GUI crashed - User pressed the wrong button</span>'
     ,
       d: 200, s: '<br/>&nbsp; &nbsp; &nbsp; &nbsp; Button id: #dont-push (index.html:32:17)'
     ,
       d: 200, s: '<br/>&nbsp; &nbsp; &nbsp; &nbsp; Event type: click ([object Object])<br/><br/>'
     ,
-      d: 1900, s: 'getDate' + ' - Attempting to relaunch page'
+      d: 1900, s: 'getDate' + ' - Attempting to relaunch GUI'
     ,
       d: 250, s: " . "
     ,
@@ -162,7 +164,7 @@
     ,
       d: 1600, s: '<br/><br/>Switching to manual override mode. . . . . .'
     ,
-      d: 1100, s: '<br/><span style="color:green;">[MANUAL OVERRIDE MODE ACTIVE]</span>'
+      d: 1100, s: '<br/><span style="color:lightgreen;">[MANUAL OVERRIDE MODE ACTIVE]</span>'
     ,
       d: 1500, s: '<br/><br/>Incoming network message:'
     ,
@@ -170,7 +172,7 @@
     ,
       d: 3000, s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>I <em>knew </em>you were going to press that button!!'
     ,
-      d: 3500, s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>It\'s ok, we can fix this.  I just need a little help from you to reconnect my image assets to their database keys.  Think of it as a game.  Just follow along.  One second...'
+      d: 3500, s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>It\'s ok, we can fix this.  I just need a little help from you to reconnect my image assets to their database keys.  Think of it as a game.  And you\'ll learn some less known facts about me along the way.  One second...'
     ]
 
     # plays after first image fragment is displayed
@@ -182,9 +184,9 @@
 
     # plays after all fragments have been correctly matched
     finalSequence:[
-      s: '<br/><br/><span style="color:green;">[IMAGE ASSET KEYS SUCCESSFULLY REBUILT]</span>'
+      s: '<br/><br/><span style="color:lightgreen;">[IMAGE ASSET KEYS SUCCESSFULLY REBUILT]</span>'
     ,
-      d: 500, s: '<br/>' + 'getDate' + ' - Asset keys varified.  OK to relaunch site'
+      d: 500, s: '<br/>' + 'getDate' + ' - Asset keys varified.  OK to relaunch GUI'
     ,
       d: 3500, s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Nice!  Looks like you fixed all the image asset keys, thanks for your help!'
     ,
@@ -194,28 +196,28 @@
     # images used in matching
     images: [
       src: 'images/unicycle.jpg'
-      backgroundPosition: '-20px -50px'
+      backgroundPosition: '-275px -440px'
       key: 'unicycle'
       info: 'Yup, I ride a 6 foot tall unicycle for fun and professionally :)'
     ,
       src: 'images/juggler.jpg'
-      backgroundPosition: '-20px -50px'
+      backgroundPosition: '-67px -43px'
       key: 'juggler'
       info: 'I was a professional juggler for many years'
     ,
       src: 'images/eagle_scout.jpg'
-      backgroundPosition: '-20px -50px'
+      backgroundPosition: '-135px -90px'
       key: 'eagle_scout'
       info: 'Many people don\'t know I\'m an Eagle Scout.'
     ,
       src: 'images/origami.jpg'
-      backgroundPosition: '-20px -50px'
+      backgroundPosition: '-208px -315px'
       key: 'origami'
       info: 'I\'ve made origami since I was 7 years old'
     ,
       src: 'images/travel.jpg'
       key: 'travel'
-      backgroundPosition: '-20px -50px'
+      backgroundPosition: '-94px -117px'
       info: 'I lived in Europe for 5 years when I was young, and have traveled around the world'
     ]
 
