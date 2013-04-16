@@ -50,25 +50,6 @@
 
       @runSequence output, 0, cb
 
-    checkKey: (id) =>
-      if id is @images[@currentImageFragmentNumber].key
-        #correct
-        console.log "right"
-        # unbind events on finished line feeds
-        $('.key').off()
-
-        # linefeed congratulations and info
-        #...
-
-        # send up next image fragment
-        # or go to end state if we are finished
-        #...
-      else
-        #wrong
-        console.log "try again"
-        # linefeed miss notice
-        #...
-
     # run render function on each step in the animation sequence,
     # and call the next step in line with it's dely
     runSequence: (sequence, step, cb) =>
@@ -80,6 +61,10 @@
       else
         cb?()
 
+    # run the passed function after a delay
+    # mostly just a convinience method to make setTimeout easier in coffeescript
+    delay: (delay, fn) ->
+      setTimeout fn, 0#delay
 
     # render() is just a proxy, so you could switch out render functions
     render: (data) =>
@@ -92,6 +77,44 @@
       @$stage.append data
       # scroll page to bottom
       $(window).scrollTop($(document).height())
+
+
+    checkKey: (id) =>
+      if id is @images[@currentImageFragmentNumber].key
+        # unbind events on finished line feeds
+        $('.key').off()
+
+        # remove key from @remainingKeys
+        # a.splice(a.indexOf('four'),1)
+
+        # linefeed success message, image and info
+        output = [
+          s: '<br/>User input: '+id+'<br/><span style="color: green;">Success: Valid asset key match.  Relinking image.'
+        ,
+          d: 500, s: '<br/><br/><img src="'+@images[@currentImageFragmentNumber].src+'"/>'
+        ,
+          d: 1000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>' + @correctResponses[Math.floor(Math.random()*@correctResponses.length)] + ' ' + @images[@currentImageFragmentNumber].info
+        ]
+
+        @runSequence output, 0, =>
+          unless @currentImageFragmentNumber is (@images.length - 1)
+            # send up next image fragment
+            @currentImageFragmentNumber++
+            @delay 2000, @renderImageFragment
+          else
+            # we are done
+            console.log 'game over, you win'
+
+      else
+        # linefeed miss notice
+        output = [
+          s: '<br/><br/>User input: '+id+'<br/><span style="color: red;">Error:</span> Non-matching key, unable to link asset'
+        , 
+          d: 1000, s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>' + @missResponses[Math.floor(Math.random()*@missResponses.length)]
+        ]
+
+        @runSequence output, 0
+
 
     # first animation sequence with delay and string
     introSequence: [
@@ -175,13 +198,22 @@
     keys: [
       "origami", "juggler", "scuba_dive", "eagle_scout", "unicycle", "travel", "sky_diving"
     ]
-    # a.splice(a.indexOf('four'),1)
 
+    correctResponses: [
+      'Nice, you got it.'
+      'That\'s right!'
+      'You\'re good at this.'
+      'That\'s a match.'
+      'Correct.'
+      'Well done.'
+    ]
 
-    # run the passed function after a delay
-    # mostly just a convinience method to make setTimeout easier in coffeescript
-    delay: (delay, fn) ->
-      setTimeout fn, 0#delay
+    missResponses: [
+      'Looks like you didn\'t find the right match, try again.'
+      'Wrong one.  Try again.'
+      'That\'s not it, try again.'
+      'Try a different one.'
+    ]
 
 
   # start game

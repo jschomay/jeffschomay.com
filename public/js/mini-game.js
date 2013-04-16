@@ -16,9 +16,9 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
   };
   Game = (function() {
     function Game() {
+      this.checkKey = __bind(this.checkKey, this);
       this.render = __bind(this.render, this);
       this.runSequence = __bind(this.runSequence, this);
-      this.checkKey = __bind(this.checkKey, this);
       this.renderImageFragment = __bind(this.renderImageFragment, this);
     }
 
@@ -68,15 +68,6 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       return this.runSequence(output, 0, cb);
     };
 
-    Game.prototype.checkKey = function(id) {
-      if (id === this.images[this.currentImageFragmentNumber].key) {
-        console.log("right");
-        return $('.key').off();
-      } else {
-        return console.log("try again");
-      }
-    };
-
     Game.prototype.runSequence = function(sequence, step, cb) {
       var _this = this;
 
@@ -91,6 +82,10 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       }
     };
 
+    Game.prototype.delay = function(delay, fn) {
+      return setTimeout(fn, 0);
+    };
+
     Game.prototype.render = function(data) {
       return this.linefeed(data);
     };
@@ -98,6 +93,44 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     Game.prototype.linefeed = function(data) {
       this.$stage.append(data);
       return $(window).scrollTop($(document).height());
+    };
+
+    Game.prototype.checkKey = function(id) {
+      var output,
+        _this = this;
+
+      if (id === this.images[this.currentImageFragmentNumber].key) {
+        $('.key').off();
+        output = [
+          {
+            s: '<br/>User input: ' + id + '<br/><span style="color: green;">Success: Valid asset key match.  Relinking image.'
+          }, {
+            d: 500,
+            s: '<br/><br/><img src="' + this.images[this.currentImageFragmentNumber].src + '"/>'
+          }, {
+            d: 1000,
+            s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>' + this.correctResponses[Math.floor(Math.random() * this.correctResponses.length)] + ' ' + this.images[this.currentImageFragmentNumber].info
+          }
+        ];
+        return this.runSequence(output, 0, function() {
+          if (_this.currentImageFragmentNumber !== (_this.images.length - 1)) {
+            _this.currentImageFragmentNumber++;
+            return _this.delay(2000, _this.renderImageFragment);
+          } else {
+            return console.log('game over, you win');
+          }
+        });
+      } else {
+        output = [
+          {
+            s: '<br/><br/>User input: ' + id + '<br/><span style="color: red;">Error:</span> Non-matching key, unable to link asset'
+          }, {
+            d: 1000,
+            s: '<br/><span style="color:yellow;"> &nbsp;' + getTime() + 'jschomay: </span>' + this.missResponses[Math.floor(Math.random() * this.missResponses.length)]
+          }
+        ];
+        return this.runSequence(output, 0);
+      }
     };
 
     Game.prototype.introSequence = [
@@ -205,9 +238,9 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
 
     Game.prototype.keys = ["origami", "juggler", "scuba_dive", "eagle_scout", "unicycle", "travel", "sky_diving"];
 
-    Game.prototype.delay = function(delay, fn) {
-      return setTimeout(fn, 0);
-    };
+    Game.prototype.correctResponses = ['Nice, you got it.', 'That\'s right!', 'You\'re good at this.', 'That\'s a match.', 'Correct.', 'Well done.'];
+
+    Game.prototype.missResponses = ['Looks like you didn\'t find the right match, try again.', 'Wrong one.  Try again.', 'That\'s not it, try again.', 'Try a different one.'];
 
     return Game;
 
