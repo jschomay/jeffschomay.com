@@ -69,7 +69,7 @@ Game = (function() {
       {
         s: '<br/><br/><span style="color:lightgreen;">[LOADING IMAGE FRAGMENT ' + (this.currentImageFragmentNumber + 1) + ']</span>'
       }, {
-        d: 2000,
+        d: 1000,
         s: '<br/><div class="fragment" style="background: url(' + f.src + '); background-position: ' + f.backgroundPosition + '"></div><br/>Asset keys:'
       }
     ];
@@ -188,7 +188,8 @@ Game = (function() {
     return this.delay(6500, function() {
       _this.$stage.remove();
       $('body').removeClass('game-mode');
-      return $('#page').show();
+      $('#page').show();
+      return $(window).scrollTop(0);
     });
   };
 
@@ -247,7 +248,7 @@ Game = (function() {
       d: 1800,
       s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>Oh, hi there.'
     }, {
-      d: 1000,
+      d: 1300,
       s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>You pressed the button, didn\'t you.'
     }, {
       d: 3000,
