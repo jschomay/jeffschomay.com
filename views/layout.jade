@@ -1,8 +1,22 @@
 !!!5
+//if IE 7
+  <html class="ie7" lang="en">
+//[if gt IE 8]><!
 html
+  //<![endif]
   head
+    //if lte IE 8
+      script
+        document.createElement("header");  
+        document.createElement("footer"); 
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     title Jeff Schomay - My Creative and Technical Sides
+    meta(name='description', content='Jeff Schomay\'s main site describing his creative and technical sides and listting some of his recent projects.')
+    meta(name='viewport', content='width=device-width')
     link(rel='stylesheet', href='/css/style.css')
+    script
+      var console=console||{"log":function(){}};
     script(src="http://code.jquery.com/jquery-1.9.1.min.js")
     script(src="/js/jquery.masonry.min.js")
     script(src="/js/main.js")
@@ -19,6 +33,15 @@ html
       })();
 
   body.technical
+    //if lt IE 7
+      p.chromeframe
+        | You are using an&nbsp;
+        strong outdated
+        | &nbsp;browser. Please&nbsp;
+        a(href='http://browsehappy.com/') upgrade your browser
+        | &nbsp;or&nbsp;
+        a(href='http://www.google.com/chromeframe/?redirect=true') activate Google Chrome Frame
+        | &nbsp;to improve your experience.
     #page
       header
         #switch

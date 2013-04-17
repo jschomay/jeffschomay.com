@@ -60,7 +60,7 @@ header #buttons a{width:27%;height:100%;display:block;float:left;margin:0 3%}
 footer{width:940px;margin-left:auto;margin-right:auto;*zoom:1;text-align:center;padding-top:20px;font-size:.8em}
 footer:before,footer:after{display:table;content:""}
 footer:after{clear:both}
-.technical{font:1em font-family 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-weight:300;background-color:#333;color:#fff;}
+.technical{font:1em 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-weight:300;background-color:#333;color:#fff;}
 .technical header h2,.technical header h2 a,.technical header h2 a:hover{color:#6fe053}
 .technical #switch{background-position:0 0}
 .technical #arrow{top:40px;margin-left:120px}
@@ -71,7 +71,7 @@ footer:after{clear:both}
 .technical a{color:#c734db}
 .technical a:hover{color:#6fe053}
 .technical footer{width:100%;border-top:4px solid #eee;background:#555}
-.creative{background-color:#fcfcfc;color:#000;font:1.1em font-family 'Garamond','Baskerville','Baskerville Old Face','Hoefler Text','Times New Roman','serif';}
+.creative{background-color:#fcfcfc;color:#000;font:1.1em 'Garamond','Baskerville','Baskerville Old Face','Hoefler Text','Times New Roman','serif';}
 .creative header header,.creative header h2,.creative header h2 a,.creative header h2 a:hover{color:inherit}
 .creative #content h1,.creative #content h2{border-bottom:1px solid #000}
 .creative #content h3{color:#21a3c4}
@@ -83,7 +83,7 @@ footer:after{clear:both}
 .creative #technical-content{height:0;overflow:hidden}
 .creative footer{background:#555;width:100%;color:#fff}
 .game-mode{background:#000;color:#fff}
-#stage{font:1em font-family 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-size:.8em;}
+#stage{font:1em 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-size:.8em;}
 #stage .fragment{width:75px;height:75px;margin:10px}
 #stage .full-image-wrapper{margin:10px;}
 #stage .full-image-wrapper .full-image{max-width:90%;overflow:hidden;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}
