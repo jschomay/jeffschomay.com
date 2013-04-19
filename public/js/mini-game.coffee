@@ -4,7 +4,7 @@ class Game
     console.log "game started ", @getTime()
 
     $('body').addClass 'game-mode'
-    $('#page').hide()
+    $('#page').css("height": 0)
     $('body').append('<div id="stage"></div>')
 
     @$stage = $ '#stage'
@@ -158,7 +158,7 @@ class Game
       @delay 6500, =>
         @$stage.remove()
         $('body').removeClass 'game-mode'
-        $('#page').show()
+        $('#page').css("height": 'auto')
         $(window).scrollTop(0)
 
 

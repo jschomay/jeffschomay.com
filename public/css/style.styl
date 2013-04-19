@@ -68,6 +68,9 @@ li
   margin-bottom 10px
   list-style circle
 
+a
+  text-decoration none
+
 .float-left
   float left
   margin-right 10px
@@ -86,6 +89,10 @@ li
 
 body
   font-size 100%
+
+
+#page
+  overflow hidden
 
 header
   $container-fixed()
@@ -135,33 +142,33 @@ header
 #content
   $container-fixed()
 
-#creative-content, #technical-content
+article#creative, article#technical
   row()
 
-#left
-  column 6
+  section.about
+    column 6
 
-#right
-  column 6
+  section.projects
+    column 6
 
-  .projects
-    row()
+    .projects-wrapper
+      row()
 
-    .project
-      column 3
-      margin-bottom 20px
-      border-bottom 1px solid #ccc
+      .project
+        column 3
+        margin-bottom 20px
+        border-bottom 1px solid #ccc
 
-      p
-        font-size .9em
-        margin-bottom 10px
-        line-height 1.3
+        p
+          font-size .9em
+          margin-bottom 10px
+          line-height 1.3
 
 footer
   $container-fixed()
   text-align center
   padding-top 20px
-  font-size .8em
+  font-size .9em
 
 
 
@@ -172,7 +179,7 @@ technical-background-color = #333333
 technical-color = #ffffff
 technical-font = 1em 'Source Code Pro', 'Monaco', 'Consolas', 'Lucida Console', 'monospace'
 
-.technical
+body.technical
 
   font technical-font
   font-weight 300
@@ -194,7 +201,7 @@ technical-font = 1em 'Source Code Pro', 'Monaco', 'Consolas', 'Lucida Console', 
   #buttons
     background-position 0 0
 
-  #creative-content
+  article#creative
     height 0px
     overflow hidden
 
@@ -222,7 +229,7 @@ creative-background-color = #fcfcfc
 creative-color = #000000
 creative-font = 1.1em 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif'
 
-.creative
+body.creative
 
   background-color creative-background-color
   color creative-color
@@ -256,7 +263,7 @@ creative-font = 1.1em 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefle
   #buttons
     background-position 0 100%
 
-  #technical-content
+  article#technical
     height 0px
     overflow hidden
 
@@ -264,10 +271,11 @@ creative-font = 1.1em 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefle
     background #555
     width 100%
     color white
+    padding 20px 0
 
 
 // mini-game
-.game-mode
+body.game-mode
   background black
   color white
 #stage
@@ -282,7 +290,7 @@ creative-font = 1.1em 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefle
   .full-image-wrapper
     margin 10px
     .full-image
-      max-width 90%
+      // max-width 90%
       overflow  hidden
       background-size 100%
 
@@ -291,3 +299,16 @@ creative-font = 1.1em 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefle
     color lightblue
     &:hover
       color white
+
+
+
+// responsive media queries
+
+@media (max-width: 480px)
+  
+  #page, header, #content, .technical, .creative, footer
+    box-sizing border-box
+    width 100%
+
+  #content, footer
+    padding 20px 20px 0 20px

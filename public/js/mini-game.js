@@ -17,7 +17,9 @@ Game = (function() {
 
     console.log("game started ", this.getTime());
     $('body').addClass('game-mode');
-    $('#page').hide();
+    $('#page').css({
+      "height": 0
+    });
     $('body').append('<div id="stage"></div>');
     this.$stage = $('#stage');
     this.currentImageFragmentNumber = 0;
@@ -188,7 +190,9 @@ Game = (function() {
     return this.delay(6500, function() {
       _this.$stage.remove();
       $('body').removeClass('game-mode');
-      $('#page').show();
+      $('#page').css({
+        "height": 'auto'
+      });
       return $(window).scrollTop(0);
     });
   };
