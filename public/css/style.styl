@@ -305,10 +305,11 @@ body.game-mode
 
 
 // responsive media queries
-
-@media (max-width: 480px)
+// less than tablet
+// @media (max-width: 480px)
+@media (max-width: 767px)
   
-  #page, header, #buttons, #content, #technical, #creative, .about, .projects, .projects-wrapper, .project, #stage, footer
+  #page, header, #content, #technical, #creative, .about, .projects, .projects-wrapper, .project, #stage, footer
     box-sizing border-box
     width 100% !important
 
@@ -339,6 +340,10 @@ body.game-mode
     #arrow
       display none
 
+    #buttons
+      width 320px
+      height (@width / 3.3)
+
   #content
     padding 0 20px
 
@@ -354,3 +359,32 @@ body.game-mode
 
   footer
     padding 20px 20px 0 20px
+
+
+// tablet
+@media (min-width: 768px) and (max-width: 979px)
+  $makeRow()
+    margin-left: 2.762430939% * -1
+    $clearfix()
+
+  $makeColumn($columns = 1)
+    float: left
+    margin-left: 2.762430939%
+    width: (5.801104972% * $columns) + (2.762430939% * ($columns - 1))
+
+
+  #page, header, footer, #content, #stage, article#technical, article#creative
+    box-sizing border-box
+    width 100%
+
+  article#technical, article#creative
+    margin 0 20px
+    section.about, section.projects
+      box-sizing border-box
+      $makeColumn 6.5
+
+  .project
+    box-sizing border-box
+    width 95% !important
+    margin-left 0
+
