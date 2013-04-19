@@ -63,7 +63,7 @@ article#creative section.projects .projects-wrapper .project p,article#technical
 footer{width:940px;margin-left:auto;margin-right:auto;*zoom:1;text-align:center;padding-top:20px;font-size:.9em}
 footer:before,footer:after{display:table;content:""}
 footer:after{clear:both}
-body.technical{font:1em 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-weight:300;background-color:#333;color:#fff;}
+body.technical{font:1em 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-weight:200;background-color:#333;color:#fff;}
 body.technical header h2,body.technical header h2 a,body.technical header h2 a:hover{color:#6fe053}
 body.technical #switch{background-position:0 0}
 body.technical #arrow{top:40px;margin-left:120px}
@@ -89,10 +89,10 @@ body.game-mode{background:#000;color:#fff}
 #stage{font:1em 'Source Code Pro','Monaco','Consolas','Lucida Console','monospace';font-size:.8em;}
 #stage .fragment{width:75px;height:75px;margin:10px}
 #stage .full-image-wrapper{margin:10px;}
-#stage .full-image-wrapper .full-image{overflow:hidden;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}
+#stage .full-image-wrapper .full-image{max-width:100%;overflow:hidden;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}
 #stage .key{cursor:pointer;color:#add8e6;}
 #stage .key:hover{color:#fff}
-@media (max-width: 480px){#page,header,#buttons,#content,#technical,#creative,.about,.projects,.projects-wrapper,.project,footer{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:100% !important}
+@media (max-width: 480px){#page,header,#buttons,#content,#technical,#creative,.about,.projects,.projects-wrapper,.project,#stage,footer{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:100% !important}
 .phone{display:auto}
 .jump{display:block;margin:auto;width:180px;background:#444;padding:10px 5px;text-align:center;border:2px solid #555;margin-top:20px}
 #creative .jump{border:3px solid #ccc}

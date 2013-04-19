@@ -115,13 +115,20 @@ class Game
         height: 0
      
       $imageWrapper = $('<div class="full-image-wrapper"></div>')
+      # if the image gets scaled (on mobile), need to scale height too
+      imageHeight = @images[@currentImageFragmentNumber].height
+      imageWidth = @images[@currentImageFragmentNumber].width
+      screenWidth = $('#stage').width() - 20 #padding
+      scaledHight = imageHeight * (screenWidth/imageWidth)
+      displayHight = if (screenWidth < imageWidth) then scaledHight else imageHeight
+
       $imageWrapper.css
-        height: @images[@currentImageFragmentNumber].height
+        height: displayHight
       $imageWrapper.append $image
 
       # animate the image height as soon as it is put on screen
       @delay 1200, =>
-        $image.animate({height: @images[@currentImageFragmentNumber].height}, 2000)
+        $image.animate({height: displayHight}, 2000)
       
       # linefeed success message, image and info
       output = [

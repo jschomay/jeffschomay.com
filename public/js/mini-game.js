@@ -126,7 +126,7 @@ Game = (function() {
   };
 
   Game.prototype.checkKey = function(id) {
-    var $image, $imageWrapper, i, output,
+    var $image, $imageWrapper, displayHight, i, imageHeight, imageWidth, output, scaledHight, screenWidth,
       _this = this;
 
     if (id === this.images[this.currentImageFragmentNumber].key) {
@@ -140,13 +140,18 @@ Game = (function() {
         height: 0
       });
       $imageWrapper = $('<div class="full-image-wrapper"></div>');
+      imageHeight = this.images[this.currentImageFragmentNumber].height;
+      imageWidth = this.images[this.currentImageFragmentNumber].width;
+      screenWidth = $('#stage').width() - 20;
+      scaledHight = imageHeight * (screenWidth / imageWidth);
+      displayHight = screenWidth < imageWidth ? scaledHight : imageHeight;
       $imageWrapper.css({
-        height: this.images[this.currentImageFragmentNumber].height
+        height: displayHight
       });
       $imageWrapper.append($image);
       this.delay(1200, function() {
         return $image.animate({
-          height: _this.images[_this.currentImageFragmentNumber].height
+          height: displayHight
         }, 2000);
       });
       output = [
