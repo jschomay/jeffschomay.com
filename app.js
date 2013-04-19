@@ -29,13 +29,14 @@ app.use(coffeescript({
   bare: true
 }));
 
-app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
   res.render('index',
   { title : 'Home' }
   );
 });
+
+app.use(express.static(__dirname + '/public'));
 
 app.listen(8000);
 console.log("Express server listening on 3000");
