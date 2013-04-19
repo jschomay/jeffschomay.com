@@ -10,7 +10,6 @@ $(document).ready ->
         itemSelector: '.project'
         columnWidth: $container.width()/2
 
-
   # switch
   $switch = $ '#switch'
   $body = $('body')
@@ -20,3 +19,11 @@ $(document).ready ->
   # do not push button
   $('#dont-push').on 'click', ->
     game.start()
+
+  # jump links
+  $('.about .jump').on 'click', ->
+    projectsLocation = $(this).parent().parent().find('.projects').offset().top
+    $('body').animate({scrollTop : projectsLocation},'normal')
+
+  $('.projects .jump').on 'click', ->
+    $('body').animate({scrollTop : 0},'normal')

@@ -85,6 +85,8 @@ a
   display block
   margin auto
 
+.phone
+  display none
 
 
 body
@@ -310,6 +312,22 @@ body.game-mode
     box-sizing border-box
     width 100% !important
 
+  .phone
+    display auto
+
+  .jump
+    display block
+    margin auto
+    width 180px
+    background #444
+    padding: 10px 5px
+    text-align center
+    border 2px solid#555
+    margin-top  20px
+
+  #creative .jump
+    border 3px solid #ccc
+
   header
     h2 
       line-height 1.9
@@ -322,10 +340,17 @@ body.game-mode
       display none
 
   #content
-    padding 20px
+    padding 0 20px
+
+    section
+      margin-bottom 40px
 
     h2
-      margin-top 50px
+      padding-top 20px
+      margin-top 40px
+
+    #technical h2
+      border-top 1px solid #AAA
 
   footer
     padding 20px 20px 0 20px

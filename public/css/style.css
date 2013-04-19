@@ -35,6 +35,7 @@ a{text-decoration:none}
 .float-left{float:left;margin-right:10px;margin-bottom:10px}
 .float-right{float:right;margin-left:10px;margin-bottom:10px}
 .center{display:block;margin:auto}
+.phone{display:none}
 body{font-size:100%}
 #page{overflow:hidden}
 header{width:940px;margin-left:auto;margin-right:auto;*zoom:1;padding:30px 0;text-align:center;position:relative;}
@@ -92,10 +93,15 @@ body.game-mode{background:#000;color:#fff}
 #stage .key{cursor:pointer;color:#add8e6;}
 #stage .key:hover{color:#fff}
 @media (max-width: 480px){#page,header,#buttons,#content,#technical,#creative,.about,.projects,.projects-wrapper,.project,footer{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:100% !important}
+.phone{display:auto}
+.jump{display:block;margin:auto;width:180px;background:#444;padding:10px 5px;text-align:center;border:2px solid #555;margin-top:20px}
+#creative .jump{border:3px solid #ccc}
 header h2{line-height:1.9}
 header #switch{width:190px;height:135.71428571428572px}
 header #arrow{display:none}
-#content{padding:20px;}
-#content h2{margin-top:50px}
+#content{padding:0 20px;}
+#content section{margin-bottom:40px}
+#content h2{padding-top:20px;margin-top:40px}
+#content #technical h2{border-top:1px solid #aaa}
 footer{padding:20px 20px 0 20px}
 }
