@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var $body, $container, $switch;
 
+  new FastClick(document.body);
   if (!$('html').hasClass('ie7')) {
     $container = $('.projects-wrapper');
     $container.imagesLoaded(function() {
