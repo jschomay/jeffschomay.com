@@ -128,7 +128,7 @@ header
     position relative
     margin auto
     width 340px
-    height (@width / 3.2)
+    height (@width / 3.3)
     background-image url('/images/buttons.jpg')
     background-size 100%
 
@@ -306,9 +306,26 @@ body.game-mode
 
 @media (max-width: 480px)
   
-  #page, header, #content, .technical, .creative, footer
+  #page, header, #buttons, #content, #technical, #creative, .about, .projects, .projects-wrapper, .project, footer
     box-sizing border-box
-    width 100%
+    width 100% !important
 
-  #content, footer
+  header
+    h2 
+      line-height 1.9
+
+    #switch
+      width 190px
+      height (@width / 1.4)
+
+    #arrow
+      display none
+
+  #content
+    padding 20px
+
+    h2
+      margin-top 50px
+
+  footer
     padding 20px 20px 0 20px

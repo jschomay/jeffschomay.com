@@ -44,7 +44,7 @@ header h2{font-size:1.2em;}
 header h2 a{text-decoration:none}
 header #switch{cursor:pointer;position:relative;margin:auto;width:225px;height:160.71428571428572px;background-image:url("/images/switch.jpg");-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}
 header #arrow{position:absolute;left:50%;width:275px;height:68.75px;background-image:url("/images/arrows.jpg");-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}
-header #buttons{position:relative;margin:auto;width:340px;height:106.25px;background-image:url("/images/buttons.jpg");-webkit-background-size:100%;-moz-background-size:100%;background-size:100%;}
+header #buttons{position:relative;margin:auto;width:340px;height:103.03030303030303px;background-image:url("/images/buttons.jpg");-webkit-background-size:100%;-moz-background-size:100%;background-size:100%;}
 header #buttons a{width:27%;height:100%;display:block;float:left;margin:0 3%}
 #content{width:940px;margin-left:auto;margin-right:auto;*zoom:1;}
 #content:before,#content:after{display:table;content:""}
@@ -91,3 +91,11 @@ body.game-mode{background:#000;color:#fff}
 #stage .full-image-wrapper .full-image{overflow:hidden;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}
 #stage .key{cursor:pointer;color:#add8e6;}
 #stage .key:hover{color:#fff}
+@media (max-width: 480px){#page,header,#buttons,#content,#technical,#creative,.about,.projects,.projects-wrapper,.project,footer{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:100% !important}
+header h2{line-height:1.9}
+header #switch{width:190px;height:135.71428571428572px}
+header #arrow{display:none}
+#content{padding:20px;}
+#content h2{margin-top:50px}
+footer{padding:20px 20px 0 20px}
+}
