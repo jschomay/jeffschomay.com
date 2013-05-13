@@ -198,7 +198,8 @@ Game = (function() {
       $('#page').css({
         "height": 'auto'
       });
-      return $(window).scrollTop(0);
+      $(window).scrollTop(0);
+      return _gaq.push(['_trackEvent', 'finish game']);
     });
   };
 

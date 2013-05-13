@@ -58,7 +58,7 @@ article#creative section.projects,article#technical section.projects{float:left;
 article#creative section.projects .projects-wrapper,article#technical section.projects .projects-wrapper{margin-left:-40px;*zoom:1;}
 article#creative section.projects .projects-wrapper:before,article#technical section.projects .projects-wrapper:before,article#creative section.projects .projects-wrapper:after,article#technical section.projects .projects-wrapper:after{display:table;content:""}
 article#creative section.projects .projects-wrapper:after,article#technical section.projects .projects-wrapper:after{clear:both}
-article#creative section.projects .projects-wrapper .project,article#technical section.projects .projects-wrapper .project{float:left;margin-left:40px;width:200px;margin-bottom:20px;border-bottom:1px solid #ccc;}
+article#creative section.projects .projects-wrapper .project,article#technical section.projects .projects-wrapper .project{float:left;margin-left:40px;width:200px;margin-bottom:20px;border-bottom:1px dotted #ccc;}
 article#creative section.projects .projects-wrapper .project p,article#technical section.projects .projects-wrapper .project p{font-size:.9em;margin-bottom:10px;line-height:1.3}
 footer{width:940px;margin-left:auto;margin-right:auto;*zoom:1;text-align:center;padding-top:20px;font-size:.9em}
 footer:before,footer:after{display:table;content:""}

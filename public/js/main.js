@@ -14,10 +14,12 @@ $(document).ready(function() {
   $switch = $('#switch');
   $body = $('body');
   $switch.on('click', function(e) {
-    return $body.toggleClass('technical creative');
+    $body.toggleClass('technical creative');
+    return _gaq.push(['_trackEvent', 'interaction', 'flip switch', $body.attr('class')]);
   });
   $('#dont-push').on('click', function() {
-    return game.start();
+    game.start();
+    return _gaq.push(['_trackEvent', 'start game']);
   });
   $('.about .jump').on('click', function() {
     var projectsLocation;

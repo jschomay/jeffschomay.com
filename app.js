@@ -38,5 +38,7 @@ app.get('/', function (req, res) {
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(8000);
-console.log("Express server listening on 3000");
+
+port = 8000
+app.listen(port);
+console.log("Express server listening on "+port);

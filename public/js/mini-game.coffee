@@ -167,6 +167,9 @@ class Game
         $('body').removeClass 'game-mode'
         $('#page').css("height": 'auto')
         $(window).scrollTop(0)
+        # track even with google analytics
+        _gaq.push(['_trackEvent', 'finish game'])
+
 
 
   # first animation sequence with delay and string
