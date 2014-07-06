@@ -18,102 +18,84 @@ section.about
 section.projects
   a.phone.jump(onclick="return false;") Jump to Top
   h2 Technical Projects
-  p A sample of what I'm working on:
 
-  .projects-wrapper
+  .project
+    h3 Github and CV
+    p See all my code on my  
+      a(href='https://github.com/jschomay') github account
+      |.
+    p Take a look at my  
+      a(href="http://localhost:8000/jeff_schomay_programming_resume.pdf") CV/Resumé
+      |.
 
-    .project
-      h3 Games currently in development
-      ul
-        li
-          p Auction (card game)
-        li
-          p Tetris Death-trap
-        li
-          p Source Hack
-        li
-          p Scaffold Armageddon
-      p.
-        More details, links to play, screenshots, etc. will come...
 
-    .project
-      h3 Grid Escape html5 game
-      p
-        | Currently in development, but a playable version is available 
-        a(href="/grid_escape") here
-        | .  Stay tuned for lots of improvements!  Writen with crafty.js game engine using coffeescript and browserify.  See the 
-        a(href="https://github.com/jschomay/grid-escape-proto/tree/master/crafty/app") source
-        | .
+  .project
+    h3 #gamedev ftw!
+    p See the ever-growing list of  
+      a(href="http://jschomay.tumblr.com/tagged/games") all my game projects
+      |.
+    p You can also follow my progress and see behind-the-scenes media and my  
+      a(href="http://jschomay.tumblr.com/tagged/dev-notes") development notes  
+      |.
 
-    .project
-      h3 Argus mobile app
-      a.float-left(href='http://m.argus-selfstorage.com', target='_blank', style='padding-top: 5px; margin-bottom: 2px;') 
-        img(src='images/argus.png')
-      p.
-        A simple business app for Argus Self-Storage.  Native feel version of their website, built with Sencha Touch.  Syncs wth their main database.
-      p
-        a(href='http://m.argus-selfstorage.com', target='_blank') View app
-        br
-        | (Intended for phone)
 
-    .project
-      h3 My code on github
-      p
-        a.float-left(href='https://github.com/jschomay')
-          img(src="images/github-icon.jpg")
-        | See my public projects
-        br
-        a(href='https://github.com/jschomay') https://github.com/jschomay
+  .project
+    h3 Apps
+    p See some of my  
+      a(href="http://jschomay.tumblr.com/tagged/apps") apps and personal projects
+      |.
 
-    .project
-      h3 "No" HTML, CSS, or JavaScript was used in the making of this website
-      :markdown
-        This site was built on [Node.js](http://nodejs.org) using [Express](http://expressjs.com/), [Jade](http://jade-lang.com/) (with markdown), [Stylus](http://learnboost.github.io/stylus/), and [Coffeescript](http://coffeescript.org).
-        
-        [View the source on github](https://github.com/jschomay/jeffschomay.com) to see what I mean.
 
-        This site also uses responsive design -- change the size of your browser or view it on a different device to see it change.
+  .project
+    h3 No HTML, CSS, or JavaScript was used in the making of this website
+    :markdown
+      This site was built on [Node.js](http://nodejs.org) using [Express](http://expressjs.com/), [Jade](http://jade-lang.com/) (with markdown), [Stylus](http://learnboost.github.io/stylus/), and [Coffeescript](http://coffeescript.org).
+      
+      [View the source on github](https://github.com/jschomay/jeffschomay.com) to see what I mean.
 
-        And if you didn't press the "Don't push" button above yet, now's a good time to push it...
+      This site also uses responsive design -- change the size of your browser or view it on a different device to see it change.
+
+      And if you didn't press the "Don't push" button above yet, now's a good time to push it...
 
 
 
-    .project
-      h3 Facebook Mini-games
-      p.
-        At my old job I was tasked to come up with fun interactive experiences to draw users to our clients' Facebook pages.  
-      a(href="https://www.facebook.com/pages/Fast-Cash-Pawn-Jewelry/116653718350461?id=116653718350461&sk=app_219321538093850", target="_blank")
-        img(src="images/facebook-games.jpg")
-      p
-        |One simple game was for Fast Cash, where players guess how much Fast Cash paid in actual cash for gold transactions.  Analytics are recorded for every action and the plays are shared across the social channels.  
-        a(href="https://www.facebook.com/pages/Fast-Cash-Pawn-Jewelry/116653718350461?id=116653718350461&sk=app_219321538093850", target="_blank") Try it yourself
-
-      p
-        |I also did other games, like a trivia game for Big Air Jumpers' Disney line of inflatable jump houses. 
-        a(href="https://www.facebook.com/BigAirJumpers/app_219321538093850", target="_blank") Play now
+  .project
+    h3 Draw Something clone
+    p.
+      I worked with another developer on a html5/nodejs variation of the popular Draw Something.  I was in charge of the front end functionality, and also built an engine to run different types of async-style games with varying numbers of rounds and difficulty levels.  We got a few different game types working.
+    p Unfortunately there is no playable demo at this time.
 
 
-    .project
-      h3 Draw Something clone
-      p.
-        I worked with another developer on a html5/nodejs variation of the popular Draw Something.  I was in charge of the front end functionality, and also built an engine to run different types of async-style games with varying numbers of rounds and difficulty levels.  We got a few different game types working.
-      p Unfortunately there is no playable demo at this time.
+  .project
+    h3 Proximity chat app
+    p.
+      For the 2012 ATT hackathon, I worked on the front end of a proximity-based live chat application using jquery-mobile, socket.io, and a node.js backend with redis.
+    p The app worked, but was abandoned with no playable demo.
 
 
-    .project
-      h3 Proximity chat app
-      p.
-        For the 2012 ATT hackathon, I worked on the front end of a proximity-based live chat application using jquery-mobile, socket.io, and a node.js backend with redis.
-      p The app worked, but was abandoned with no playable demo.
-
-
-    .project
-      h3 Educational games at Two Bit Circus
-      p
-        | I worked with a really cool company in LA called 
-        a(href="http://twobitcircus.com/", target='_blank') Two Bit Circus 
-        | where I was part of a team working on a large scale html5/javascript based game platform for the iPad to be used in schools.  I worked on designing the core engine as well as a number of specific game-type engines, and a bunch of individual games.
-      p.
-        For example, I created a highly interactive number-line tool, a balance scale that measured both equations and draggalbe weights, and a card-sorting engine.
+  .project
+    h3 Educational games at Two Bit Circus
+    p
+      | I worked with a really cool company in LA called 
+      a(href="http://twobitcircus.com/", target='_blank') Two Bit Circus 
+      | where I was part of a team working on a large scale html5/javascript based game platform for the iPad to be used in schools.  I worked on designing the core engine as well as a number of specific game-type engines, and a bunch of individual games.
+    p.
+      For example, I created a highly interactive number-line tool, a balance scale that measured both equations and draggalbe weights, and a card-sorting engine.
 
   a.phone.jump(onclick="return false;") Jump to Top
+  
+
+  .project
+    h3 Legacy stuff
+    p.
+      At my old job I was tasked to come up with fun interactive experiences to draw users to our clients' Facebook pages.  
+    a(href="https://www.facebook.com/pages/Fast-Cash-Pawn-Jewelry/116653718350461?id=116653718350461&sk=app_219321538093850", target="_blank")
+      img(src="images/facebook-games.jpg")
+    p
+      |One simple game was for Fast Cash, where players guess how much Fast Cash paid in actual cash for gold transactions.  Analytics are recorded for every action and the plays are shared across the social channels.  
+      a(href="https://www.facebook.com/pages/Fast-Cash-Pawn-Jewelry/116653718350461?id=116653718350461&sk=app_219321538093850", target="_blank") Try it yourself
+
+    p
+      |I also did other games, like a trivia game for Big Air Jumpers' Disney line of inflatable jump houses. 
+      a(href="https://www.facebook.com/BigAirJumpers/app_219321538093850", target="_blank") Play now
+

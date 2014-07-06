@@ -2,14 +2,6 @@ $(document).ready ->
   # fastclick
   new FastClick(document.body)
 
-  # masonry (doesn't work nice on ie7)
-  unless $('html').hasClass 'ie7'
-    $container = $ '.projects-wrapper'
-    $container.imagesLoaded ->
-      $container.masonry
-        itemSelector: '.project'
-        columnWidth: $container.width()/2
-
   # switch
   $switch = $ '#switch'
   $body = $('body')

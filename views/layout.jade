@@ -1,4 +1,4 @@
-!!!5
+doctype html
 //if IE 7
   <html class="ie7" lang="en">
 //[if gt IE 8]><!
@@ -24,7 +24,7 @@ html
     script(src="//cdnjs.cloudflare.com/ajax/libs/masonry/2.1.08/jquery.masonry.min.js")
     script(src="/js/main.js")
     script(src="/js/mini-game.js")
-    script
+    script.
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-40140506-1']);
       _gaq.push(['_trackPageview']);
@@ -51,20 +51,17 @@ html
         #arrow
         h1 Jeff Schomay
         h2
-          script
+          script.
             (function(z){
               // contact obscurer
-              var t = "&#051;&#050;&#051;&#045;&#052;&#049;&#056;&#045;&#050;&#051;&#056;&#052;",
-                  e = "&#106;&#115;&#099;&#104;&#111;&#109;&#097;&#121;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;",
+              var e = "&#106;&#115;&#099;&#104;&#111;&#109;&#097;&#121;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;",
                   f = function(x,y){
                     document.write("<a hre" + x + ":" + y + ">" + y + "</a>");
                   };
-              f("f=t"+"el", t);
-              document.write(" | ");
               f("f=ma"+"ilto",e);
             })();
         #buttons
-          a#resume(href='jeff_schomay_programming_resume.pdf', target='_blank')
+          a#blog(href='http://jschomay.tumblr.com', target='_blank')
           a#twitter(href='https://twitter.com/jschomay')
           a#dont-push(href='', onclick='return false;')
       #content

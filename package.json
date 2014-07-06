@@ -13,7 +13,9 @@
     "jade": "*",
     "stylus": "*",
     "nib": "*",
-    "markdown": "*"
+    "markdown": "*",
+    "connect-coffee-script": "*",
+    "bootstylus": "*"
 
   }
 }

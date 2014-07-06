@@ -219,7 +219,7 @@ class Game
 
   # plays after first image fragment is displayed
   sequence2:[
-    s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Ok, it\'s your turn.  Click on the asset key you think this image fragment fits with.'
+    s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Ok, it\'s your turn.  Click on the blue asset key you think this image fragment fits with.'
   ]
 
   # plays after all fragments have been correctly matched

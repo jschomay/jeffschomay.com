@@ -12,9 +12,7 @@ Game = (function() {
   }
 
   Game.prototype.start = function() {
-    var i, img, _i, _len, _ref, _results,
-      _this = this;
-
+    var i, img, _i, _len, _ref, _results;
     console.log("game started ", this.getTime());
     $('body').addClass('game-mode');
     $('#page').css({
@@ -24,17 +22,19 @@ Game = (function() {
     this.$stage = $('#stage');
     this.currentImageFragmentNumber = 0;
     this.remainingKeys = this.keys;
-    this.delay(1000, function() {
-      return _this.runSequence(_this.introSequence, 0, function() {
-        return _this.delay(6000, function() {
-          return _this.renderImageFragment(function() {
-            return _this.delay(1000, function() {
-              return _this.runSequence(_this.sequence2, 0);
+    this.delay(1000, (function(_this) {
+      return function() {
+        return _this.runSequence(_this.introSequence, 0, function() {
+          return _this.delay(6000, function() {
+            return _this.renderImageFragment(function() {
+              return _this.delay(1000, function() {
+                return _this.runSequence(_this.sequence2, 0);
+              });
             });
           });
         });
-      });
-    });
+      };
+    })(this));
     _ref = this.images;
     _results = [];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -48,7 +48,6 @@ Game = (function() {
 
   Game.prototype.getTime = function() {
     var currentTime, hours, minutes, seconds;
-
     currentTime = new Date();
     hours = currentTime.getHours();
     minutes = currentTime.getMinutes();
@@ -63,9 +62,7 @@ Game = (function() {
   };
 
   Game.prototype.renderImageFragment = function(cb) {
-    var f, k, key, output, _i, _len, _ref,
-      _this = this;
-
+    var f, k, key, output, _i, _len, _ref;
     f = this.images[this.currentImageFragmentNumber];
     output = [
       {
@@ -79,9 +76,11 @@ Game = (function() {
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       key = _ref[_i];
       k = $('<span class="key" id="' + key + '">["' + key + '"]</span>');
-      k.on('click', function(e) {
-        return _this.checkKey(e.target.id);
-      });
+      k.on('click', (function(_this) {
+        return function(e) {
+          return _this.checkKey(e.target.id);
+        };
+      })(this));
       output.push({
         d: 0,
         s: [' ', k]
@@ -95,14 +94,14 @@ Game = (function() {
   };
 
   Game.prototype.runSequence = function(sequence, step, cb) {
-    var _this = this;
-
     this.render(sequence[step].s);
     if (step < sequence.length - 1) {
       step++;
-      return this.delay(sequence[step].d, function() {
-        return _this.runSequence(sequence, step, cb);
-      });
+      return this.delay(sequence[step].d, (function(_this) {
+        return function() {
+          return _this.runSequence(sequence, step, cb);
+        };
+      })(this));
     } else {
       return typeof cb === "function" ? cb() : void 0;
     }
@@ -126,9 +125,7 @@ Game = (function() {
   };
 
   Game.prototype.checkKey = function(id) {
-    var $image, $imageWrapper, displayHight, i, imageHeight, imageWidth, output, scaledHight, screenWidth,
-      _this = this;
-
+    var $image, $imageWrapper, displayHight, i, imageHeight, imageWidth, output, scaledHight, screenWidth;
     if (id === this.images[this.currentImageFragmentNumber].key) {
       $('.key').off();
       i = $.inArray(id, this.remainingKeys);
@@ -149,11 +146,13 @@ Game = (function() {
         height: displayHight
       });
       $imageWrapper.append($image);
-      this.delay(1200, function() {
-        return $image.animate({
-          height: displayHight
-        }, 2000);
-      });
+      this.delay(1200, (function(_this) {
+        return function() {
+          return $image.animate({
+            height: displayHight
+          }, 2000);
+        };
+      })(this));
       output = [
         {
           s: '<br/><br/>User input: ' + id + '<br/><span style="color: lightgreen;">Success: Valid asset key match.  Relinking image.'
@@ -165,16 +164,18 @@ Game = (function() {
           s: '<br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay: </span>' + this.correctResponses[Math.floor(Math.random() * this.correctResponses.length)] + ' ' + this.images[this.currentImageFragmentNumber].info
         }
       ];
-      return this.runSequence(output, 0, function() {
-        if (_this.currentImageFragmentNumber !== (_this.images.length - 1)) {
-          _this.currentImageFragmentNumber++;
-          return _this.delay(4000, _this.renderImageFragment);
-        } else {
-          return _this.delay(3500, function() {
-            return _this.runSequence(_this.finalSequence, 0, _this.tearDown);
-          });
-        }
-      });
+      return this.runSequence(output, 0, (function(_this) {
+        return function() {
+          if (_this.currentImageFragmentNumber !== (_this.images.length - 1)) {
+            _this.currentImageFragmentNumber++;
+            return _this.delay(4000, _this.renderImageFragment);
+          } else {
+            return _this.delay(3500, function() {
+              return _this.runSequence(_this.finalSequence, 0, _this.tearDown);
+            });
+          }
+        };
+      })(this));
     } else {
       output = [
         {
@@ -189,18 +190,18 @@ Game = (function() {
   };
 
   Game.prototype.tearDown = function() {
-    var _this = this;
-
     console.log("now back to your regularly scheduled programe...", this.getTime());
-    return this.delay(6500, function() {
-      _this.$stage.remove();
-      $('body').removeClass('game-mode');
-      $('#page').css({
-        "height": 'auto'
-      });
-      $(window).scrollTop(0);
-      return _gaq.push(['_trackEvent', 'finish game']);
-    });
+    return this.delay(6500, (function(_this) {
+      return function() {
+        _this.$stage.remove();
+        $('body').removeClass('game-mode');
+        $('#page').css({
+          "height": 'auto'
+        });
+        $(window).scrollTop(0);
+        return _gaq.push(['_trackEvent', 'finish game']);
+      };
+    })(this));
   };
 
   Game.prototype.introSequence = [
@@ -271,7 +272,7 @@ Game = (function() {
 
   Game.prototype.sequence2 = [
     {
-      s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Ok, it\'s your turn.  Click on the asset key you think this image fragment fits with.'
+      s: '<br/><br/><span style="color:yellow;"> &nbsp;' + " getTime " + 'jschomay - </span>Ok, it\'s your turn.  Click on the blue asset key you think this image fragment fits with.'
     }
   ];
 
