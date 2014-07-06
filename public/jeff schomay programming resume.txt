@@ -1,0 +1,59 @@
+/**
+* JEFF SCHOMAY - FULL STACK JAVASCRIPT SOFTWARE ENGINEER
+* 
+* Node / Coffeescript / Mobile / Apps / HTML5 Games
+*
+* Offering expert javascript knowledge, robust coding and architecture skills, 
+* comprehensive familiarity with modern tools and techniques.
+*
+* Living in: Bristol, UK
+* Phone: +1 720-227-4380 (US)
+*        +44 75 0303 8776 (UK)
+* E-mail: jschomay@gmail.com
+* Website: http://jeffschomay.com
+* Blog: http://jschomay.tumblr.com/
+* Github: https://github.com/jschomay
+* 
+* Resume version: 1.3.0
+*/
+
+var JeffSchomay = {
+
+  objective : "To work on exciting & creative projects, with an good team, using modern technologies.",
+
+  highlighted_skills : [
+    "advanced javascript and coffeescript",
+    "node.js/exress/mongoDB/npm",
+    "backbone.js",
+    "regex",
+    "cli build/automation tools",
+    "TDD/BDD testing",
+    "git",
+    "OOP and functional coding styles",
+    "stickler for best practices and clean code",
+    "technical _and_ creative",
+    "UX"
+    "quick learner",
+    "HTML5 game development"
+    "Phonegap/Cordova"
+    "agile/scrum"
+  ],
+
+  experience : {
+    Blue_Speck_Financial : "Senoir software engineer on award-winning, cross-device personal finance app.",
+
+    BLT_Communications : "JS developer on international interactive digital media for upcoming films and television shows from production studios including HBO, Sony, and 20th Century Fox.",
+
+    Two_Bit_Circus : "JS architect on an educational games platform targeted for tablets, plus game-engine developer on multiple educational game categories.",
+
+    Xcite_Media_Group : "Sr. web developer, focused on customized Wordpress sites and branded apps.",
+
+    independent_projects : "Design and development of multiple html5 games - see jeffschomay.com.",
+
+    schooling : ["University of Colorado - BFA, Film Production",
+                "International Baccalaureate",
+                "Lots of reading!"],
+  },
+
+  trivia : [ "Eagle Scout", "Lived in Colorado, Los Angeles, Germany, Switzerland, UK", "Screenwriter", "Juggler"],
+};
