@@ -4,20 +4,35 @@ section.about
   :markdown
     **JavaScript.  CoffeeScript.  Node.  HTML5.  Mobile.  Apps.  Games.**
 
-    I love programming.  I love having the power to create at my fingertips.   The challenge of making everything fit together elegantly.  But most of all, I love being able to create something fun and interesting, and turn a creative idea into an engaging interactive experience.  
+    I love coding.
 
-    My focus is on game development, especially for mobile.  I've been inspired by the seemingly magic art of making a simple mechanic so incredibly fun and addicting through good game design.  As a screenwriter, I'm lured by the open opportunities to use stories and create worlds in new ways.
+    - It offers the challenge of solving complex logic puzzles.
+    - It imposes order and structure onto chaos.
+    - It bestows the power of creation - to literally manifest ideas into reality.
 
-    I have always been amazed with computer programmers, and I've often flirted with coding -- from writing simple text-based adventure games in BASIC on my cassette-tape-driven TRS-80, to dabbling with C++ and OpenGL in college, to working as a full time web developer.
+    Notable transitions in my coding journey:
 
-    But it's only been in the last few years, that I've really considered myself a true hacker.  Since then  I've learned so much about writing good, clean code, and the learning hasn't slowed down yet.  I can't stop thinking about code.
+    - **From visual to code**: Though I played with coding ever since I learned to make simple games on my TRS-80 in BASIC, my primary focus throughout school was visual.  I've worked as a cinematographer, a film editor, a graphic artist, and a 3D modeler.  As I got more involved with web technologies, I glimpsed the "dev culture" and the elegance of robustly written code.  The point when I noticed I preferred to work in an editor instead of Photoshop and talk about async control flow is when I realized I was a "true" developer.
 
-    Of course, my more visual "right-brain" side hasn't gone away, and I find myself in a very awesome position at the crossroads of technical coding and visual/conceptual design.  This unique position is what differentiates and defines me.
+    - **The backbone.js revolution**: I was swept up with the rest of the world at the entrance of the SPA and moving to MVC in the browser.  After that it was all about trying to keep up with the never ending js lib explosion, but always relying on the stability of keeping your data separated from your views and definitely not in the DOM!
+
+    - **Node.js**:  I got involved early with node and I haven't looked back.  For a while I was one of the "cool" developers - "Wow, those guys are working with node!"  Node brought with it a very interesting and very relevant ecosystem, including async utils, npm, and build tools like browserify - even more js libs to keep track of.
+
+    - **Game dev**: I was very lucky to work with an amazing game designer who inspired me with the magic of captivating a player with well designed mechanics and pacing.  Coding and games have often overlapped for me, but this turning point gave me a strong push into the world of game dev.  It is a perfect fit between my technical and creative sides.
+
+    - **From imperative to functional**: Underscore.js brought a revelation to many developers I believe, myself included.  I felt a definite shift in my dev powers when I started using map and reduce.  I've recently taken this way further with the outstanding "auto-curried" ramda.js library, which I found early on.  It has has since been indoctrinated as a cornerstone of our development tools where I work.  The biggest win of FP for me is that is describes _what_ your code does, not _how_ it does it.
+
+    - **Vim**: I finally got on vim, my transformation is complete.  Coding never felt the same (or so good).  I am one with the code.  I am free of the mouse.  I could talk for hours about neat vim tricks and optimal navigation combos.  True geek-status confirmed.
+
+    - **The challenge of scalability**:  The world seems to be experiencing a new revolution where backbone.js-style apps aren't cutting it in terms of scalability.  I ran into this problem directly at my work when tasked with re-architecthing the platform base for our V2.0.  Scalability heavily informed our design decisions, and we became early adopters of Facebook's react.js library and "flux" pattern, which so far has been a very enjoyable experience that many other leading companies seem to be moving towards as well.  The new paradigm for developer sanity is building composable modules while maintaining consistent state through immutable data structures and uni-directional flows.
+
+    - **Into the future**: What's next for me?  I'm currently looking into the "haskell-esque" FRP language "elm" to expand my horizons into new ways of writing and thinking about code.
+
 
 
 section.projects
   a.phone.jump(onclick="return false;") Jump to Top
-  h2 Technical Projects
+  h2 Technical Profile
 
   .project
     h3 Github and CV
@@ -25,77 +40,37 @@ section.projects
       a(href='https://github.com/jschomay') github account
       |.
     p Take a look at my  
-      a(href="/jeff_schomay_programming_resume.pdf") CV/Resumé
+      a(href="/jeff_schomay_programming_resume.pdf") CV
       |.
 
 
   .project
-    h3 #gamedev ftw!
-    p See the ever-growing list of  
-      a(href="http://jschomay.tumblr.com/tagged/games") all my game projects
-      |.
-    p You can also follow my progress and see behind-the-scenes media and my  
-      a(href="http://jschomay.tumblr.com/tagged/dev-notes") development notes  
-      |.
-
-
-  .project
-    h3 Apps
-    p See some of my  
-      a(href="http://jschomay.tumblr.com/tagged/apps") apps and personal projects
-      |.
-
-
-  .project
-    h3 No HTML, CSS, or JavaScript was used in the making of this website
-    :markdown
-      This site was built on [Node.js](http://nodejs.org) using [Express](http://expressjs.com/), [Jade](http://jade-lang.com/) (with markdown), [Stylus](http://learnboost.github.io/stylus/), and [Coffeescript](http://coffeescript.org).
-      
-      [View the source on github](https://github.com/jschomay/jeffschomay.com) to see what I mean.
-
-      This site also uses responsive design -- change the size of your browser or view it on a different device to see it change.
-
-      And if you didn't press the "Don't push" button above yet, now's a good time to push it...
-
-
-
-  .project
-    h3 Draw Something clone
-    p.
-      I worked with another developer on a html5/nodejs variation of the popular Draw Something.  I was in charge of the front end functionality, and also built an engine to run different types of async-style games with varying numbers of rounds and difficulty levels.  We got a few different game types working.
-    p Unfortunately there is no playable demo at this time.
-
-
-  .project
-    h3 Proximity chat app
-    p.
-      For the 2012 ATT hackathon, I worked on the front end of a proximity-based live chat application using jquery-mobile, socket.io, and a node.js backend with redis.
-    p The app worked, but was abandoned with no playable demo.
-
-
-  .project
-    h3 Educational games at Two Bit Circus
+    h3 From my blog
+    p Recently on 
+      a(href="http://codeperfectionist.com") CodePerfectionist.com
+      | :
     p
-      | I worked with a really cool company in LA called 
-      a(href="http://twobitcircus.com/", target='_blank') Two Bit Circus 
-      | where I was part of a team working on a large scale html5/javascript based game platform for the iPad to be used in schools.  I worked on designing the core engine as well as a number of specific game-type engines, and a bunch of individual games.
-    p.
-      For example, I created a highly interactive number-line tool, a balance scale that measured both equations and draggalbe weights, and a card-sorting engine.
-
-  a.phone.jump(onclick="return false;") Jump to Top
-  
+      script(src="http://feeds.feedburner.com/CodePerfectionistArticles?format=sigpro", type="text/javascript")
 
   .project
-    h3 Legacy stuff
-    p.
-      At my old job I was tasked to come up with fun interactive experiences to draw users to our clients' Facebook pages.  
-    a(href="https://www.facebook.com/pages/Fast-Cash-Pawn-Jewelry/116653718350461?id=116653718350461&sk=app_219321538093850", target="_blank")
-      img(src="images/facebook-games.jpg")
-    p
-      |One simple game was for Fast Cash, where players guess how much Fast Cash paid in actual cash for gold transactions.  Analytics are recorded for every action and the plays are shared across the social channels.  
-      a(href="https://www.facebook.com/pages/Fast-Cash-Pawn-Jewelry/116653718350461?id=116653718350461&sk=app_219321538093850", target="_blank") Try it yourself
-
-    p
-      |I also did other games, like a trivia game for Big Air Jumpers' Disney line of inflatable jump houses. 
-      a(href="https://www.facebook.com/BigAirJumpers/app_219321538093850", target="_blank") Play now
-
+    h3 Game Dev
+    p See the full 
+      a(href="http://codeperfectionist.com/portfolio/games") list of my games
+      |.
+    ul
+      li
+        p
+          a(href="http://codeperfectionist.com/portfolio/games/color-blindness-blitz/") COLOR BLINDNESS BLITZ              
+        p
+          a(href="http://codeperfectionist.com/portfolio/games/color-blindness-blitz/")
+            img(src="http://codeperfectionist.com/wp-content/uploads/stroop-effect-based-game-150x150.png")
+        p 
+          i A challenging, fast-paced color matching game, where you try to beat your own brain.  
+      li
+        p
+          a(href="http://codeperfectionist.com/portfolio/games/phaserfire/") PHASERFIRE
+        p
+          a(href="http://codeperfectionist.com/portfolio/games/phaserfire/")
+            img(src="http://codeperfectionist.com/wp-content/uploads/Screen-shot-2014-11-25-at-8.55.18-150x150.png")
+        p 
+          i A vertical scrolling 2D space shoot-em-up game for desktop and mobile, built in javascript, based on my phaser.js game engine tutorial.
