@@ -150,16 +150,9 @@ article#creative, article#technical
         margin-bottom 10px
         line-height 1.3
 
-article#technical section.projects .project
-  border-bottom none
-  border-left 1px dotted #ccc
-  padding-left 10px
+      &:last-of-type
+        border-bottom none
 
-footer
-  $container-fixed()
-  text-align center
-  padding-top 20px
-  font-size .9em
 
 
 
@@ -167,20 +160,19 @@ footer
 
 // technical side overrides
 technical-background-color = #333333
-technical-color = #ffffff
+technical-color = #ddd
 technical-font = 1em sans-serif
 
 body.technical
 
   font technical-font
   font-weight 200
-  // #content
   background-color technical-background-color
   color technical-color
 
   header
     h2, h2 a, h2 a:hover
-      color rgb(255, 235, 0)
+      color inherit
 
   #switch
     background-position 0 0
@@ -192,9 +184,6 @@ body.technical
   #buttons
     background-position 0 0
 
-  article#technical .about p
-    font-size 0.9em
-
   article#creative
     height 0px
     overflow hidden
@@ -205,42 +194,22 @@ body.technical
     img
       border 2px solid #777
 
-    .feedburnerFeedBlock
-      img
-        border 0px
-      .headline a
-        font-size 0.9em
-        line-height 1.3
-        margin-bottom 0.3em
-        display block
-      div
-        font-size 0.9em
-        font-style italic
-        line-height 1.3
-
-  h2
-    color #22B7C4
-
-  h3
-    color #DD1F1F
+  #content
+    h1, h2
+      border-bottom 1px dotted technical-color
 
   a
-    color rgb(255, 235, 0)
-  
+    color #DABA10
   a:hover
-    color #DD1F1F
+    color #DB521D
 
-  footer
-    width 100%
-    border-top 4px solid #EEE
-    background #555
 
 
 
 // creative side overrides
 creative-background-color = #fcfcfc
-creative-color = #000000
-creative-font = 1.1em 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif'
+creative-color = #444
+creative-font = 1em sans-serif
 
 body.creative
 
@@ -255,10 +224,7 @@ body.creative
 
   #content
     h1, h2
-      border-bottom 1px solid creative-color
-
-    h3
-      color #21A3C4
+      border-bottom 1px dotted creative-color
 
   a
     color #DABA10
@@ -280,11 +246,6 @@ body.creative
     height 0px
     overflow hidden
 
-  footer
-    background #555
-    width 100%
-    color white
-    padding 20px 0
 
 
 // mini-game
@@ -320,7 +281,7 @@ body.game-mode
 // @media (max-width: 480px)
 @media (max-width: 767px)
   
-  #page, header, #content, #technical, #creative, .about, .projects, .projects-wrapper, .project, #stage, footer
+  #page, header, #content, #technical, #creative, .about, .projects, .projects-wrapper, .project, #stage
     box-sizing border-box
     width 100% !important
 
@@ -338,7 +299,8 @@ body.game-mode
     margin-top  20px
 
   #creative .jump
-    border 3px solid #ccc
+    border 1px dotted #ccc
+    background #eee
 
   header
     h2 
@@ -365,12 +327,6 @@ body.game-mode
       padding-top 20px
       margin-top 40px
 
-    #technical h2
-      border-top 1px solid #AAA
-
-  footer
-    padding 20px 20px 0 20px
-
 
 // tablet
 @media (min-width: 768px) and (max-width: 979px)
@@ -384,7 +340,7 @@ body.game-mode
     width: (5.801104972% * $columns) + (2.762430939% * ($columns - 1))
 
 
-  #page, header, footer, #content, #stage, article#technical, article#creative
+  #page, header, #content, #stage, article#technical, article#creative
     box-sizing border-box
     width 100%
 

@@ -50,23 +50,9 @@ html
         #arrow
         h1 Jeff Schomay
         h2
-          script.
-            (function(z){
-              // contact obscurer
-              var e = "&#106;&#115;&#099;&#104;&#111;&#109;&#097;&#121;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;",
-                  f = function(x,y){
-                    document.write("<a hre" + x + ":" + y + ">" + y + "</a>");
-                  };
-              f("f=ma"+"ilto",e);
-            })();
         #buttons
-          a#blog(href='http://codeperfectionist.com', target='_blank')
-          a#twitter(href='https://twitter.com/jschomay')
+          a#blog(href='http://blog.elmnarrativeengine.com/', target='_blank')
+          a#twitter(href='https://twitter.com/jschomay', target='_blank')
           a#dont-push(href='', onclick='return false;')
       #content
         block content
-
-      footer
-        :markdown
-          This site was designed and coded by Jeff Schomay using [Node.js](http://nodejs.org), [Express](http://expressjs.com/), [Jade](http://jade-lang.com/), [Stylus](http://learnboost.github.io/stylus/), and [Coffeescript](http://coffeescript.org).  
-          You can view the source on [Github](https://github.com/jschomay/jeffschomay.com).

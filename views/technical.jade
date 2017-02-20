@@ -2,75 +2,41 @@ section.about
   a.phone.jump(onclick="return false;") Jump to Projects
   h2 My Technical Side
   :markdown
-    **JavaScript.  CoffeeScript.  Node.  HTML5.  Mobile.  Apps.  Games.**
+    **Full-stack web application development.  Polyglot.  Functional programming.  Game dev.**
 
-    I love coding.
+    I love coding.  I spend most of my time writing code, or talking about code, or thinking about code.  With my code before me in vim, I have the power to create anything literally at my fingertips.
+    
+    I wasn't always a programmer.  Although I played with coding ever since I learned to make simple games on my TRS-80 in BASIC, my original focus was more visual, and I earned a BFA degree in Film Production rather than CS.  Since then however, I have become an expert and continue to diligently hone my skills and stay active in the community.
 
-    - It offers the challenge of solving complex logic puzzles.
-    - It imposes order and structure onto chaos.
-    - It bestows the power of creation - to literally manifest ideas into reality.
+    All of my experiences have led me to functional programming, especially statically typed languages.  In particular, I have become extremely active in Elm and I can't get enough.  I have spoken at Elm conferences, I have open source Elm projects, I run meetups and teach Elm, and I have championed [using Elm at Pivotal Tracker](https://www.pivotaltracker.com/blog/Elm-pivotal-tracker/).
 
-    Notable transitions in my coding journey:
-
-    - **From visual to code**: Though I played with coding ever since I learned to make simple games on my TRS-80 in BASIC, my primary focus throughout school was visual.  I've worked as a cinematographer, a film editor, a graphic artist, and a 3D modeler.  As I got more involved with web technologies, I glimpsed the "dev culture" and the elegance of robustly written code.  The point when I noticed I preferred to work in an editor instead of Photoshop and talk about async control flow is when I realized I was a "true" developer.
-
-    - **The backbone.js revolution**: I was swept up with the rest of the world at the entrance of the SPA and moving to MVC in the browser.  After that it was all about trying to keep up with the never ending js lib explosion, but always relying on the stability of keeping your data separated from your views and definitely not in the DOM!
-
-    - **Node.js**:  I got involved early with node and I haven't looked back.  For a while I was one of the "cool" developers - "Wow, those guys are working with node!"  Node brought with it a very interesting and very relevant ecosystem, including async utils, npm, and build tools like browserify - even more js libs to keep track of.
-
-    - **Game dev**: I was very lucky to work with an amazing game designer who inspired me with the magic of captivating a player with well designed mechanics and pacing.  Coding and games have often overlapped for me, but this turning point gave me a strong push into the world of game dev.  It is a perfect fit between my technical and creative sides.
-
-    - **From imperative to functional**: Underscore.js brought a revelation to many developers I believe, myself included.  I felt a definite shift in my dev powers when I started using map and reduce.  I've recently taken this way further with the outstanding "auto-curried" ramda.js library, which I found early on.  It has has since been indoctrinated as a cornerstone of our development tools where I work.  The biggest win of FP for me is that is describes _what_ your code does, not _how_ it does it.
-
-    - **Vim**: I finally got on vim, my transformation is complete.  Coding never felt the same (or so good).  I am one with the code.  I am free of the mouse.  I could talk for hours about neat vim tricks and optimal navigation combos.  True geek-status confirmed.
-
-    - **The challenge of scalability**:  The world seems to be experiencing a new revolution where backbone.js-style apps aren't cutting it in terms of scalability.  I ran into this problem directly at my work when tasked with re-architecthing the platform base for our V2.0.  Scalability heavily informed our design decisions, and we became early adopters of Facebook's react.js library and "flux" pattern, which so far has been a very enjoyable experience that many other leading companies seem to be moving towards as well.  The new paradigm for developer sanity is building composable modules while maintaining consistent state through immutable data structures and uni-directional flows.
-
-    - **Into the future**: What's next for me?  I'm currently looking into the "haskell-esque" FRP language "elm" to expand my horizons into new ways of writing and thinking about code.
 
 
 
 section.projects
   a.phone.jump(onclick="return false;") Jump to Top
-  h2 Technical Profile
+  h2 Technical Work
 
   .project
     h3 Github and CV
-    p See all my code on my  
-      a(href='https://github.com/jschomay') github account
-      |.
-    p Take a look at my  
+    p See all my code on  
+      a(href='https://github.com/jschomay') Github
+    p Download my 
       a(href="/jeff_schomay_programming_resume.pdf") CV
-      |.
-
 
   .project
-    h3 From my blog
-    p Recently on 
-      a(href="http://codeperfectionist.com") CodePerfectionist.com
-      | :
-    p
-      script(src="http://feeds.feedburner.com/CodePerfectionistArticles?format=sigpro", type="text/javascript")
+    h3 Game dev
+    a(href='http://jugglemonkey.com')
+      img(src='http://jugglemonkey.com/img/portfolio/haskellmind/splash.jpg', width='150', style='border: 1px solid #ccc;')
+    :markdown
+      I've made a few games in multiple tech stacks.  You can find the source and play them on my [games portfolio](http://jugglemonkey.com).
 
   .project
-    h3 Game Dev
-    p See the full 
-      a(href="http://codeperfectionist.com/portfolio/games") list of my games
-      |.
-    ul
-      li
-        p
-          a(href="http://codeperfectionist.com/portfolio/games/color-blindness-blitz/") COLOR BLINDNESS BLITZ              
-        p
-          a(href="http://codeperfectionist.com/portfolio/games/color-blindness-blitz/")
-            img(src="http://codeperfectionist.com/wp-content/uploads/stroop-effect-based-game-150x150.png")
-        p 
-          i A challenging, fast-paced color matching game, where you try to beat your own brain.  
-      li
-        p
-          a(href="http://codeperfectionist.com/portfolio/games/phaserfire/") PHASERFIRE
-        p
-          a(href="http://codeperfectionist.com/portfolio/games/phaserfire/")
-            img(src="http://codeperfectionist.com/wp-content/uploads/Screen-shot-2014-11-25-at-8.55.18-150x150.png")
-        p 
-          i A vertical scrolling 2D space shoot-em-up game for desktop and mobile, built in javascript, based on my phaser.js game engine tutorial.
+    h3 My ElmConfUS2016 talk
+    p I debut my 
+      a(href='http://elmnarrativeengine.com') Elm Narrative Engine 
+      | and talk about the challenges of building it in Elm
+      <iframe width="270" src="https://www.youtube-nocookie.com/embed/t8RSxzpw1Yw" frameborder="0" allowfullscreen></iframe>
+
+
+  a.phone.jump(onclick="return false;") Jump to Top

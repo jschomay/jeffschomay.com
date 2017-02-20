@@ -4,18 +4,21 @@
   "description": "jeffschomay.com ===============",
   "author": "Jeff Schomay",
   "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "build": "sh build.sh"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/jschomay/jeffschomay.com.git"
   },
     "dependencies": {
     "express": "3.x",
-    "jade": "*",
-    "stylus": "*",
+    "jade": "1.0.x",
+    "stylus": "0.48.x",
     "nib": "*",
     "markdown": "*",
     "connect-coffee-script": "*",
     "bootstylus": "*"
-
   }
 }
