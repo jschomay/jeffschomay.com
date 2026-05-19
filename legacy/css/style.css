@@ -265,7 +265,7 @@ header #switch {
   margin: auto;
   width: 225px;
   height: 160.71428571428572px;
-  background-image: url("/images/switch.jpg");
+  background-image: url("../images/switch.jpg");
   background-size: 100%;
 }
 header #arrow {
@@ -273,7 +273,7 @@ header #arrow {
   left: 50%;
   width: 275px;
   height: 68.75px;
-  background-image: url("/images/arrows.jpg");
+  background-image: url("../images/arrows.jpg");
   background-size: 100%;
 }
 header #buttons {
@@ -281,7 +281,7 @@ header #buttons {
   margin: auto;
   width: 340px;
   height: 103.03030303030303px;
-  background-image: url("/images/buttons-blog.jpg");
+  background-image: url("../images/buttons-blog.jpg");
   background-size: 100%;
 }
 header #buttons a {
