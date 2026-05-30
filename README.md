@@ -1,4 +1,15 @@
-jeffschomay.com
-===============
+# Jeff Schomay — Portfolio
 
-My personal web profile
+A single-page portfolio site. Terminal / CRT-phosphor aesthetic, built with **React + Vite**. 
+
+```bash
+npm install
+
+npm run dev
+
+npm run build
+
+npm run preview
+
+gh-pages -d dist
+```
