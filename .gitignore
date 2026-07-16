@@ -3,3 +3,4 @@ npm-debug.log
 *.DS_Store
 psd/
 dist/
+dist-ssr/

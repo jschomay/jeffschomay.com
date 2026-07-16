@@ -6,6 +6,29 @@
 // build time. (See README.)
 // ──────────────────────────────────────────────────────────────────
 
+// ── Profile ─────────────────────────────────────────────────────────
+// Feeds the JSON-LD structured data injected at build time
+// (see prerender.mjs) so search engines and recruiter software get a
+// machine-readable Person card that stays in sync with this file.
+export const PROFILE = {
+  name: 'Jeff Schomay',
+  jobTitle: 'Senior Staff AI Engineer',
+  url: 'https://jeffschomay.com/',
+  description:
+    'Senior Staff AI Engineer specializing in agentic AI systems at scale. ' +
+    'Technical. Creative. Curious. I build things others don’t see yet.',
+  knowsAbout: [
+    'Agentic AI systems',
+    'Context engineering',
+    'Generative AI',
+    'LLM applications',
+    'Legacy system modernization',
+    'Multimodal AI pipelines',
+    'Game development',
+    'Interactive storytelling',
+  ],
+};
+
 export const QUOTES = [
   { q: 'Jeff is my guy for the heady problems.', by: 'Sam Dawson · Product Manager, Mechanical Orchard' },
   { q: 'Consistently ahead of the agentic curve.', by: 'Aldric Giacomoni · Staff R&D Engineer, Mechanical Orchard' },

@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react';
 // Type-reveal "scramble" animation for the hero name. Each character
 // resolves from random glyphs to its final value, left to right.
 // Pass on={false} to render the final text immediately (no animation).
+// Initial state is the final text so prerendered HTML (and hydration)
+// carry the real content; the animation takes over client-side.
 // ──────────────────────────────────────────────────────────────────
 export default function Scramble({ text, delay = 0, on = true, className, style }) {
-  const [out, setOut] = useState(on ? '' : text);
+  const [out, setOut] = useState(text);
 
   useEffect(() => {
     if (!on) {
